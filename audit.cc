@@ -13,6 +13,9 @@
 #include <sstream>
 #include <string>
 
+#include "compartment.hh"
+#include "rtos.hh"
+
 namespace
 {
 	/**
@@ -80,6 +83,11 @@ namespace
 
 	using namespace rego;
 
+	/**
+	 * Built-in function exposed to Rego for demangling the symbol names in
+	 * export entries.  Takes two arguments, the compartment name and the
+	 * mangled symbol name.
+	 */
 	Node demangle_export(const Nodes &args)
 	{
 		Node exportName = unwrap_arg(args, UnwrapOpt(1).types({JSONString}));
@@ -126,6 +134,13 @@ namespace
 		return scalar(std::move(demangled));
 	}
 
+	/**
+	 * Helper that decodes the hex strings emitted for static sealed objects.
+	 * These are written as sequences of bytes, with a space between each four
+	 * bytes.
+	 *
+	 * Takes a node that must have been unwrapped to a JSONString.
+	 */
 	std::vector<uint8_t> decode_hex_node(const Node &node)
 	{
 		if (node->type() == Error)
@@ -156,6 +171,19 @@ namespace
 		return result;
 	}
 
+	/**
+	 * Built-in function exposed to Rego for decoding a hex string into an
+	 * integer.
+	 *
+	 * Takes three arguments:
+	 * 1. The hex string to decode
+	 * 2. The offset in the string to start decoding
+	 * 3. The number of bytes to decode
+	 *
+	 * The third argument must be 1, 2, 3, or 4 bytes (3 does not make sense,
+	 * but it's easier to allow it than exclude it).  This corresponds to
+	 * uint8_t, uint16_t, and uint32_t in the source.
+	 */
 	Node decode_integer(const Nodes &args)
 	{
 		auto bytes =
@@ -181,6 +209,11 @@ namespace
 		return scalar(BigInt{int64_t(result)});
 	}
 
+	/**
+	 * Built-in function exposed to Rego for decoding a hex string containing a
+	 * C string into a Rego string.  This takes two arguments, the hex string
+	 * and the offset where the C string starts.
+	 */
 	Node decode_c_string(const Nodes &args)
 	{
 		auto bytes =
@@ -239,146 +272,8 @@ int main(int argc, char **argv)
 		std::cerr << "Failed to parse board JSON" << std::endl;
 		return EXIT_FAILURE;
 	}
-	rego.add_module("compartment", R"(
-		package compartment
-
-		compartment_contains_export(compartment, export) {
-			compartment.exports[_] == export
-		}
-
-		files_for_export(export) = f {
-			some compartments
-			compartments = [compartment | compartment = input.compartments[_]; compartment_contains_export(compartment, export)]
-			# FIXME: Look in data sections as well
-			f = {f2 | compartments[_].code.inputs[_].file = f2}
-		}
-
-		export_matches_import(export, importEntry)  {
-			export.export_symbol = importEntry.export_symbol
-		}
-
-
-		export_for_import(importEntry) = entry { 
-			some possibleEntries
-			some allExports
-			allExports = {export | input.compartments[_].exports[_] = export}
-			possibleEntries = [entry | entry = allExports[_]; export_matches_import(entry, importEntry)]
-			count(possibleEntries) == 1
-			files_for_export(possibleEntries[0])[_] == importEntry.provided_by
-			entry := possibleEntries[0]
-		}
-
-		import_is_library_call(a) { a.kind = "LibraryFunction" }
-		import_is_MMIO(a) { a.kind = "MMIO" }
-		import_is_compartment_call(a) {
-			a.kind = "CompartmentExport"
-			a.function
-		}
-
-		mmio_imports_for_compartment(compartment) = entry {
-			entry := [e | e = compartment.imports[_]; import_is_MMIO(e)]
-		}
-
-		mmio_is_device(importEntry, device) {
-			importEntry.start = device.start
-			importEntry.length = device.length
-		}
-
-		device_for_mmio_import(importEntry) = device {
-			import_is_MMIO(importEntry)
-			some devices
-			devices = [{ i:d } | d = data.board.devices[i]; mmio_is_device(importEntry, d)]
-			count(devices) == 1
-			device := devices[0]
-		}
-
-		compartment_imports_device(compartment, device) {
-			count([d | d = mmio_imports_for_compartment(compartment)[_] ; mmio_is_device(d, device)]) > 0
-		}
-
-		compartments_with_mmio_import(device) = compartments {
-			compartments = [i | c = input.compartments[i]; compartment_imports_device(c, device)]
-		}
-
-		compartment_export_matching_symbol(compartmentName, symbol) = export {
-			some compartment
-			compartment = input.compartments[compartmentName]
-			some exports
-			exports = [e | e = compartment.exports[_]; re_match(symbol, export_entry_demangle(compartmentName, e.export_symbol))]
-			count(exports) == 1
-			export := exports[0]
-		}
-
-		compartments_calling_export(export) = compartments {
-			compartments = [c | i = input.compartments[c].imports[_]; export_matches_import(i, export)]
-		}
-
-		compartments_calling_export_matching(compartmentName, export) = compartments {
-			compartments = compartments_calling_export(compartment_export_matching_symbol(compartmentName, export))
-		}
-
-		# Helper for allow lists.  Functions cannot return sets, so this
-		# accepts an array of compartment names that match some property and
-		# evaluates to true if and only if each one is also present in the allow
-		# list.
-		allow_list(testArray, allowList) {
-			some compartments
-			compartments = {c | c:=testArray[_]}
-			compartments & allowList == compartments
-		}
-
-		mmio_allow_list(mmioName, allowList) {
-			allow_list(compartments_with_mmio_import(data.board.devices[mmioName]), allowList)
-		}
-
-		compartment_call_allow_list(compartmentName, exportPattern, allowList) {
-			allow_list(compartments_calling_export_matching(compartmentName, exportPattern), allowList)
-		}
-
-
-		)");
-	rego.add_module("rtos", R"(
-		package rtos
-		
-		import future.keywords
-
-		is_allocator_capability(capability) {
-			capability.kind == "SealedObject"
-			capability.sealing_type.compartment == "alloc"
-			capability.sealing_type.key == "MallocKey"
-		}
-
-		decode_allocator_capability(capability) = decoded {
-			is_allocator_capability(capability)
-			some quota
-			quota = integer_from_hex_string(capability.contents, 0, 4)
-			# Remaining words are all zero
-			integer_from_hex_string(capability.contents, 4, 4) == 0
-			integer_from_hex_string(capability.contents, 8, 4) == 0
-			integer_from_hex_string(capability.contents, 12, 4) == 0
-			integer_from_hex_string(capability.contents, 16, 4) == 0
-			integer_from_hex_string(capability.contents, 20, 4) == 0
-			decoded := { "quota": quota }
-		}
-
-		all_sealed_allocator_capabilities_are_valid {
-			some allocatorCapabilities
-			allocatorCapabilities = [ c | c = input.compartments[_].imports[_] ; is_allocator_capability(c) ]
-			every c in allocatorCapabilities {
-				decode_allocator_capability(c)
-			}
-		}
-
-
-		valid {
-			all_sealed_allocator_capabilities_are_valid
-			# Only the allocator may access the revoker.
-			data.compartment.mmio_allow_list("revoker", {"allocator"})
-			# Only the scheduler may access the interrupt controllers.
-			data.compartment.mmio_allow_list("clint", {"scheduler"})
-			data.compartment.mmio_allow_list("plic", {"scheduler"})
-		}
-		)");
+	rego.add_module("compartment", compartmentPackage);
+	rego.add_module("rtos", rtosPackage);
 	for (auto &modulePath : modules)
 	{
 		rego.add_module_file(modulePath);
