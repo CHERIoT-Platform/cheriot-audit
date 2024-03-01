@@ -1,0 +1,5 @@
+.cache
+Debug
+Release
+Build
+compile_commands.json
