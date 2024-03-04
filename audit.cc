@@ -3,11 +3,9 @@
 
 #include <CLI/CLI.hpp>
 #include <charconv>
-#include <cstdlib>
 #include <cxxabi.h>
 #include <fstream>
 #include <iostream>
-#include <malloc/_malloc.h>
 #include <nlohmann/json.hpp>
 #include <rego/rego.hh>
 #include <sstream>
