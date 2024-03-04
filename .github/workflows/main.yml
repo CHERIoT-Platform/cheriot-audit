@@ -1,0 +1,62 @@
+name: cheriot-audit CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        config:
+        - {
+            name: "Ubuntu Latest Release",
+            os: "ubuntu-latest",
+            build-type: Release,
+            dependencies: "sudo apt install ninja-build"
+          }
+        - {
+            name: "Ubuntu 20.04 Release",
+            os: "ubuntu-20.04",
+            build-type: Release,
+            dependencies: "sudo apt install ninja-build"
+          }
+        - {
+            name: "macOS Release",
+            os: "macos-latest",
+            build-type: Release,
+            dependencies: "brew update && brew install cmake ninja"
+          }
+        - {
+            name: "Ubuntu Latest Debug",
+            os: "ubuntu-latest",
+            build-type: Debug,
+            dependencies: "sudo apt install ninja-build"
+          }
+        - {
+            name: "Ubuntu 20.04 Debug",
+            os: "ubuntu-20.04",
+            build-type: Debug,
+            dependencies: "sudo apt install ninja-build"
+          }
+        - {
+            name: "macOS Debug",
+            os: "macos-latest",
+            build-type: Debug,
+            dependencies: "brew update && brew install cmake ninja"
+          }
+    runs-on: ${{ matrix.config.os }}
+    name: ${{ matrix.config.name }}
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install ninja
+      run: ${{ matrix.config.dependencies }}
+    - name: Configure CMake
+      run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{matrix.config.build-type}} -G Ninja
+    - name: Build
+      working-directory: ${{github.workspace}}/build
+      # Build your program with the given configuration
+      run: NINJA_STATUS="%p [%f:%s/%t] %o/s, %es" && ninja
