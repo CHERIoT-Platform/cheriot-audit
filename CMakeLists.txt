@@ -13,11 +13,6 @@ FetchContent_MakeAvailable(regocpp)
 FetchContent_Declare(nlohmann_json URL https://github.com/nlohmann/json/releases/download/v3.11.3/json.tar.xz)
 FetchContent_MakeAvailable(nlohmann_json)
 
-
-find_package(nlohmann_json 3.2.0 REQUIRED)
-
-
-
 add_executable(cheriot-audit audit.cc)
 set_property(TARGET cheriot-audit PROPERTY CXX_STANDARD 20)
 
