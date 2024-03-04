@@ -22,7 +22,7 @@ namespace
 	 * function will try parsing the board description and rewrite the hex
 	 * numbers to decimal when it encounters them.
 	 */
-	bool add_board_json(rego::Interpreter &rego, std::string_view filename)
+	bool add_board_json(rego::Interpreter &rego, const std::string &filename)
 	{
 		nlohmann::json j;
 		std::ifstream  ifs(filename);
