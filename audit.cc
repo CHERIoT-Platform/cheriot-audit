@@ -219,7 +219,7 @@ namespace
 		auto        offsetNode = unwrap_arg(args, UnwrapOpt(1).types({Int}));
 		size_t      offset     = get_int(offsetNode).to_int();
 		std::string result;
-		if ((offset < 0) || (offset >= bytes.size()))
+		if (offset >= bytes.size())
 		{
 			return scalar(false);
 		}
