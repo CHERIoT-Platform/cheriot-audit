@@ -1,0 +1,3 @@
+# Check that we can demangle a library export correctly.
+--board inputs/sail.json -j inputs/test-suite.json -q 'data.compartment.compartment_call_allow_list("allocator_test", `test_allocator\(\)`, {"test_runner"})'
+

@@ -101,23 +101,34 @@ namespace
 		}
 		auto string                         = get_string(exportName);
 		auto compartmentNameString          = get_string(compartmentName);
+		const std::string_view LibraryExportPrefix = "__library_export_libcalls";
 		const std::string_view ExportPrefix = "__export_";
-		if (!string.starts_with(ExportPrefix))
+		if (string.starts_with(LibraryExportPrefix))
 		{
-			return scalar(false);
+			string = string.substr(LibraryExportPrefix.size());
 		}
-		string = string.substr(ExportPrefix.size());
-		if (!string.starts_with(compartmentNameString))
+		else
 		{
-			return scalar(false);
+			if (!string.starts_with(ExportPrefix))
+			{
+				return scalar(false);
+			}
+			string = string.substr(ExportPrefix.size());
+			if (!string.starts_with(compartmentNameString))
+			{
+				return scalar(false);
+			}
+			string = string.substr(compartmentNameString.size());
 		}
-		string = string.substr(compartmentNameString.size());
 		if (!string.starts_with("_"))
 		{
 			return scalar(false);
 		}
 		string            = string.substr(1);
-		size_t bufferSize = 128;
+		// The way that rego-cpp exposes snmalloc can cause the realloc here to
+		// crash.  Try to allocate a buffer that's large enough that we don't
+		// care.
+		size_t bufferSize = strlen(string.c_str()) * 8;
 		char  *buffer     = static_cast<char *>(malloc(bufferSize));
 		int    error;
 		buffer =
