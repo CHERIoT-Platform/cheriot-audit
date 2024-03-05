@@ -1,0 +1,4 @@
+# Check that we can demangle a compartment export correctly.
+--board inputs/sail.json -j inputs/test-suite.json -q 'export_entry_demangle("alloc", input.compartments.allocator.exports[6].export_symbol)'
+
+

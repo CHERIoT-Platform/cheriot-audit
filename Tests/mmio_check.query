@@ -1,0 +1,3 @@
+# Check that we can demangle a library export correctly.
+--board inputs/sail.json -j inputs/test-suite.json -q 'data.compartment.mmio_allow_list("clint", {"scheduler"})'
+

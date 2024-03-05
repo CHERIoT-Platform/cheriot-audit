@@ -10,6 +10,7 @@ on:
 jobs:
   build:
     strategy:
+      fail-fast: false
       matrix:
         config:
         - {
@@ -60,3 +61,7 @@ jobs:
       working-directory: ${{github.workspace}}/build
       # Build your program with the given configuration
       run: NINJA_STATUS="%p [%f:%s/%t] %o/s, %es" && ninja
+    - name: Test
+      working-directory: ${{github.workspace}}/build
+      # Build your program with the given configuration
+      run: ctest -j4 --output-on-failure

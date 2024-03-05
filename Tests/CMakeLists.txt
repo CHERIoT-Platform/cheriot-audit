@@ -1,5 +1,5 @@
 message(STATUS "Adding tests")
-file(GLOB TESTS "*.query" CONFIGURE_DEPENDS "*.query")
+file(GLOB TESTS CONFIGURE_DEPENDS "*.query")
 
 message(STATUS "Tests: ${TESTS}")
 
