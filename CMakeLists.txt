@@ -18,3 +18,6 @@ set_property(TARGET cheriot-audit PROPERTY CXX_STANDARD 20)
 
 target_link_libraries(cheriot-audit PRIVATE regocpp::rego)
 target_link_libraries(cheriot-audit PRIVATE nlohmann_json::nlohmann_json)
+
+enable_testing()
+add_subdirectory("Tests")

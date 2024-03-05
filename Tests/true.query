@@ -1,0 +1,2 @@
+# Check that we can parse a trival query
+--board inputs/sail.json -j inputs/test-suite.json -q 'true'
