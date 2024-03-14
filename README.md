@@ -145,6 +145,10 @@ Given an entry from a compartment's `imports` array, returns the corresponding `
 
 Type predicates that, given an entry from a compartment's `imports` array, hold if the import refers to a cross-compartment call, a cross-library call, or an MMIO capability.
 
+`import_is_callable(a)`
+
+Type predicate that, given an entry from a compartment's `imports` array, holds if the import refers to either a compartment or library call.
+
 `mmio_imports_for_compartment(compartment)`
 
 Helper that returns all of the MMIO imports for a compartment.
@@ -178,6 +182,13 @@ Returns an array of all compartments that can directly call a specific export ta
 
 Given a compartment name and a regular expression (uniquely) describing an exported function, return the array of compartments that may directly call that function.
 
+`compartment_exports_function(callee, importEntry)`
+
+Predicate that matches if the compartment (or library) named by `callee` is the compartment that exports the entry point given by `importEntry`.
+
+`compartments_calling(callee)`
+
+Returns the names of all compartments that call the compartment named by `callee` (via any exported function).
 
 `allow_list(testArray, allowSet)`
 
@@ -191,6 +202,10 @@ Predicate that, given the name of a device and a set of compartments that are al
 `compartment_call_allow_list(compartmentName, exportPattern, allowSet)`
 
 Predicate that, given the name of a compartment and a regular expression that uniquely identifies one of its exported functions, fails if any compartment not in the allow set is able to call it.
+
+`compartment_allow_list(compartmentName, allowSet)`
+
+Predicate that, given the name of a compartment, fails if any compartment not in the allow set is able to call any of the exported entry points from this function.
 
 
 ### The RTOS package
