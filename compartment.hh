@@ -10,11 +10,12 @@ namespace
 			compartment.exports[_] == export
 		}
 
-		files_for_export(export) = f {
-			some compartments
-			compartments = [compartment | compartment = input.compartments[_]; compartment_contains_export(compartment, export)]
-			# FIXME: Look in data sections as well
-			f = {f2 | compartments[_].code.inputs[_].file = f2}
+		compartment_includes_file(compartment, filename) {
+			compartment.code.inputs[_].file == filename
+		}
+
+		compartment_includes_file(compartment, filename) {
+			compartment.data.inputs[_].file == filename
 		}
 
 		export_matches_import(export, importEntry)  {
@@ -26,10 +27,10 @@ namespace
 			some possibleEntries
 			some allExports
 			allExports = {export | input.compartments[_].exports[_] = export}
-			possibleEntries = [entry | entry = allExports[_]; export_matches_import(entry, importEntry)]
+			possibleEntries = [{"compartment": compartment, "entry": entry} | entry = input.compartments[compartment].exports[_]; export_matches_import(entry, importEntry)]
 			count(possibleEntries) == 1
-			files_for_export(possibleEntries[0])[_] == importEntry.provided_by
-			entry := possibleEntries[0]
+			compartment_includes_file(input.compartments[possibleEntries[0].compartment], importEntry.provided_by)
+			entry := possibleEntries[0].entry
 		}
 
 		import_is_library_call(a) { a.kind = "LibraryFunction" }
@@ -37,6 +38,14 @@ namespace
 		import_is_compartment_call(a) {
 			a.kind = "CompartmentExport"
 			a.function
+		}
+
+		import_is_call {
+			import_is_library_call(importEntry)
+		}
+
+		import_is_call {
+			import_is_compartment_call(importEntry)
 		}
 
 		mmio_imports_for_compartment(compartment) = entry {
@@ -81,6 +90,36 @@ namespace
 			compartments = compartments_calling_export(compartment_export_matching_symbol(compartmentName, export))
 		}
 
+		# Helper that builds a map from symbol names to compartments.  This is
+		# to avoid some O(n^2) lookups.  Or would, if rego-cpp didn't recompute
+		# this every evaluation.
+		#entry_point_map := { entry.export_symbol : compartment | entry = input.compartments[compartment].exports[_] ; entry.kind = "Function"}
+
+		compartment_exports_function(callee, importEntry) {
+			#entry_point_map[importEntry.export_symbol] == callee
+			some possibleEntries
+			possibleEntries = [entry | entry = input.compartments[callee].exports[_]; export_matches_import(entry, importEntry)]
+			count(possibleEntries) == 1
+			compartment_includes_file(input.compartments[callee], importEntry.provided_by)
+		}
+
+		# Helper to work around rego-cpp#117
+		check_export(exports, importEntry, compartment) {
+			exports[importEntry.export_symbol] == compartment
+		}
+
+		compartments_calling(callee) = compartments {
+			# Create a reverse map that maps from exported symbols to
+			# compartments.  This avoids some O(n^2) lookups.  It would be nice
+			# to cache this globally but rego-cpp doesn't support that yet.
+			# This reduces the time for this query on the test suite from over
+			# 6s to under 0.5s for me.
+			some entry_point_map
+			entry_point_map = { entry.export_symbol : compartment | entry = input.compartments[compartment].exports[_] ; entry.kind = "Function"}
+			compartments = {c | i = input.compartments[c].imports[_]; check_export(entry_point_map, i, callee)}
+		}
+
+
 		# Helper for allow lists.  Functions cannot return sets, so this
 		# accepts an array of compartment names that match some property and
 		# evaluates to true if and only if each one is also present in the allow
@@ -98,5 +137,10 @@ namespace
 		compartment_call_allow_list(compartmentName, exportPattern, allowList) {
 			allow_list(compartments_calling_export_matching(compartmentName, exportPattern), allowList)
 		}
+
+		compartment_allow_list(compartmentName, allowList) {
+			allow_list(compartments_calling(compartmentName), allowList)
+		}
+
 		)";
 } // namespace
