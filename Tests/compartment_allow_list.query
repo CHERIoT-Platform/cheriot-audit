@@ -1,0 +1,2 @@
+--board inputs/sail.json -j inputs/test-suite.json -q 'data.compartment.compartment_allow_list("allocator_test", {"test_runner", "allocator_test"})'
+
