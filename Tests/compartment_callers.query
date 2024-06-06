@@ -1,0 +1,1 @@
+--board inputs/sail.json -j inputs/test-suite.json -q 'data.compartment.compartments_calling("allocator_test")'
