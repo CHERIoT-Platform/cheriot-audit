@@ -1,0 +1,2 @@
+# Check that invalid queries return undefined
+--board inputs/sail.json -j inputs/test-suite.json -q 'data.this.is.undefined'

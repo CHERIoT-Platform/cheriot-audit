@@ -243,6 +243,71 @@ namespace
 		return scalar(std::move(result));
 	}
 
+	std::string
+	extract_first_expression_from_result(const std::string &result_json)
+	{
+		if(result_json == "undefined"){
+			return result_json;
+		}
+
+		nlohmann::json result;
+		try
+		{
+			result = result.parse(result_json);
+		}
+		catch (nlohmann::json::parse_error &e)
+		{
+			return e.what();
+		}
+
+		if (result.is_array())
+		{
+			if (result.empty())
+			{
+				std::cerr << "warning: query returned no results." << std::endl;
+			}
+			else
+			{
+				if (result.size() > 1)
+				{
+					std::cerr
+					  << "warning: query returned multiple results. Only "
+					     "the first will be used."
+					  << std::endl;
+				}
+
+				result = result[0];
+			}
+		}
+
+		if (result.is_object() && result.contains("expressions"))
+		{
+			auto &expressions = result["expressions"];
+			if (expressions.is_array())
+			{
+				if (expressions.empty())
+				{
+					std::cerr << "warning: query returned no results."
+					         << std::endl;
+				}
+				else
+				{
+					return expressions[0].dump();
+				}
+			}
+			else
+			{
+				std::cerr << "error: expected 'expressions' to be an array"
+				         << std::endl;
+			}
+		}
+
+		std::cerr
+		  << "error: expected results to be either an array or an object."
+		  << std::endl;
+		return "";
+	}
+
 } // namespace
 
 int main(int argc, char **argv)
@@ -287,5 +352,6 @@ int main(int argc, char **argv)
 	{
 		rego.add_module_file(modulePath);
 	}
-	std::cout << rego.query(query) << std::endl;
+	std::cout << extract_first_expression_from_result(rego.query(query))
+	          << std::endl;
 }
