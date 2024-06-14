@@ -246,7 +246,8 @@ namespace
 	std::string
 	extract_first_expression_from_result(const std::string &result_json)
 	{
-		if(result_json == "undefined"){
+		if (result_json == "undefined")
+		{
 			return result_json;
 		}
 
@@ -265,49 +266,50 @@ namespace
 			if (result.empty())
 			{
 				std::cerr << "warning: query returned no results." << std::endl;
+				return result_json;
 			}
-			else
-			{
-				if (result.size() > 1)
-				{
-					std::cerr
-					  << "warning: query returned multiple results. Only "
-					     "the first will be used."
-					  << std::endl;
-				}
 
-				result = result[0];
+			if (result.size() > 1)
+			{
+				std::cerr << "warning: query returned multiple results. Only "
+				             "the first will be used."
+				          << std::endl;
 			}
+
+			result = result[0];
 		}
 
-		if (result.is_object() && result.contains("expressions"))
+		if (!result.is_object())
 		{
-			auto &expressions = result["expressions"];
-			if (expressions.is_array())
-			{
-				if (expressions.empty())
-				{
-					std::cerr << "warning: query returned no results."
-					         << std::endl;
-				}
-				else
-				{
-					return expressions[0].dump();
-				}
-			}
-			else
-			{
-				std::cerr << "error: expected 'expressions' to be an array"
-				         << std::endl;
-			}
+			std::cerr
+			  << "error: expected results to be either an array or an object."
+			  << std::endl;
+			return result_json;
 		}
 
-		std::cerr
-		  << "error: expected results to be either an array or an object."
-		  << std::endl;
-		return "";
-	}
+		if (!result.contains("expressions"))
+		{
+			std::cerr << "error: result object does not contain 'expressions'"
+			          << std::endl;
+			return result_json;
+		}
 
+		auto &expressions = result["expressions"];
+		if (!expressions.is_array())
+		{
+			std::cerr << "error: expected 'expressions' to be an array"
+			          << std::endl;
+			return result_json;
+		}
+
+		if (expressions.empty())
+		{
+			std::cerr << "warning: query returned no results." << std::endl;
+			return result_json;
+		}
+
+		return expressions[0].dump();
+	}
 } // namespace
 
 int main(int argc, char **argv)
