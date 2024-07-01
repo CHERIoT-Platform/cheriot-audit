@@ -12,7 +12,7 @@ endif ()
 if (DEFINED ENV{REGOCPP_TAG})
   set(REGOCPP_TAG $ENV{REGOCPP_TAG})
 else ()
-  set(REGOCPP_TAG "cfabe01a63e1d302e3924d03531aa0ad41e8947b")
+  set(REGOCPP_TAG "v0.4.2")
 endif()
 
 include(FetchContent)
