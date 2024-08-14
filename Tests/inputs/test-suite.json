@@ -6,19 +6,13 @@
           {
             "file": "build/cheriot/cheriot/release/cheriot.allocator.compartment",
             "section_name": ".text",
-            "sha256": "524222b315c14e892c064f464289f1d6d2113332323c3ee48e010871d39e5d32",
-            "size": 15740
-          },
-          {
-            "file": "build/cheriot/cheriot/release/cheriot.allocator.compartment",
-            "section_name": ".rodata",
-            "sha256": "40848ee436ba2090c78c9fe8ba5db9ddd0506a4363497bc10bc6965d776d9b46",
-            "size": 4754
+            "sha256": "0c33b0ff36678ad5355ceb118bd7d79f284f1b9373fc14d0f9bac41a4effd4bb",
+            "size": 8604
           }
         ],
         "name": "allocator_code",
         "output": {
-          "sha256": "2893ce4cf2cb2eb10f3d67a325dbf428a641c978f30a4cb934ecdfa2882b4cdf"
+          "sha256": "e0d6af2aae90f66a6db8123910296f2e26e7afc301e7e2bba5c4e7851bc8d9ee"
         }
       },
       "exports": [
@@ -33,7 +27,7 @@
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 1,
-          "start_offset": 208
+          "start_offset": 192
         },
         {
           "export_symbol": "__export_alloc__Z21heap_quarantine_emptyv",
@@ -41,15 +35,15 @@
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 0,
-          "start_offset": 494
+          "start_offset": 416
         },
         {
-          "export_symbol": "__export_alloc__Z13heap_allocateP7TimeoutP10SObjStructj",
+          "export_symbol": "__export_alloc__Z13heap_allocateP7TimeoutP10SObjStructjj",
           "exported": true,
           "interrupt_status": "enabled",
           "kind": "Function",
-          "register_arguments": 3,
-          "start_offset": 694
+          "register_arguments": 4,
+          "start_offset": 616
         },
         {
           "export_symbol": "__export_alloc__Z10heap_claimP10SObjStructPv",
@@ -57,7 +51,7 @@
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 2,
-          "start_offset": 1250
+          "start_offset": 1196
         },
         {
           "export_symbol": "__export_alloc__Z13heap_can_freeP10SObjStructPv",
@@ -65,7 +59,7 @@
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 2,
-          "start_offset": 2200
+          "start_offset": 1720
         },
         {
           "export_symbol": "__export_alloc__Z9heap_freeP10SObjStructPv",
@@ -73,7 +67,7 @@
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 2,
-          "start_offset": 2410
+          "start_offset": 1922
         },
         {
           "export_symbol": "__export_alloc__Z13heap_free_allP10SObjStruct",
@@ -81,15 +75,15 @@
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 1,
-          "start_offset": 2572
+          "start_offset": 2066
         },
         {
-          "export_symbol": "__export_alloc__Z19heap_allocate_arrayP7TimeoutP10SObjStructjj",
+          "export_symbol": "__export_alloc__Z19heap_allocate_arrayP7TimeoutP10SObjStructjjj",
           "exported": true,
           "interrupt_status": "enabled",
           "kind": "Function",
-          "register_arguments": 4,
-          "start_offset": 3310
+          "register_arguments": 5,
+          "start_offset": 2598
         },
         {
           "export_symbol": "__export_alloc__Z13token_key_newv",
@@ -97,7 +91,7 @@
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 0,
-          "start_offset": 3482
+          "start_offset": 2772
         },
         {
           "export_symbol": "__export_alloc__Z27token_sealed_unsealed_allocP7TimeoutP10SObjStructP10SKeyStructjPPv",
@@ -105,7 +99,7 @@
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 5,
-          "start_offset": 3742
+          "start_offset": 2978
         },
         {
           "export_symbol": "__export_alloc__Z18token_sealed_allocP7TimeoutP10SObjStructP10SKeyStructj",
@@ -113,7 +107,7 @@
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 4,
-          "start_offset": 4342
+          "start_offset": 3458
         },
         {
           "export_symbol": "__export_alloc__Z17token_obj_destroyP10SObjStructP10SKeyStructS0_",
@@ -121,7 +115,15 @@
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 3,
-          "start_offset": 4456
+          "start_offset": 3572
+        },
+        {
+          "export_symbol": "__export_alloc__Z21token_obj_can_destroyP10SObjStructP10SKeyStructS0_",
+          "exported": true,
+          "interrupt_status": "enabled",
+          "kind": "Function",
+          "register_arguments": 3,
+          "start_offset": 3790
         },
         {
           "export_symbol": "__export_alloc__Z14heap_availablev",
@@ -129,7 +131,7 @@
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 0,
-          "start_offset": 4626
+          "start_offset": 3880
         }
       ],
       "imports": [
@@ -140,30 +142,32 @@
         },
         {
           "kind": "MMIO",
-          "length": 148960,
+          "length": 140096,
           "permits_load": true,
           "permits_load_mutable": true,
           "permits_load_store_capabilities": true,
           "permits_store": true,
-          "start": 2147596832
+          "start": 2147605696
         },
         {
-          "kind": "MMIO",
+          "kind": "SharedObject",
           "length": 48,
           "permits_load": true,
           "permits_load_mutable": false,
           "permits_load_store_capabilities": true,
-          "permits_store": true,
-          "start": 2147595576
+          "permits_store": false,
+          "shared_object": "allocator_hazard_pointers",
+          "start": 2147604616
         },
         {
-          "kind": "MMIO",
+          "kind": "SharedObject",
           "length": 4,
           "permits_load": true,
-          "permits_load_mutable": false,
-          "permits_load_store_capabilities": false,
+          "permits_load_mutable": true,
+          "permits_load_store_capabilities": true,
           "permits_store": true,
-          "start": 2147595624
+          "shared_object": "allocator_epoch",
+          "start": 2147604608
         },
         {
           "kind": "MMIO",
@@ -204,6 +208,13 @@
           "provided_by": "build/cheriot/cheriot/release/crt.library"
         },
         {
+          "compartment_name": "sched",
+          "export_symbol": "__export_sched__Z16futex_timed_waitP7TimeoutPKjjj",
+          "function": "futex_timed_wait(Timeout*, unsigned int const*, unsigned int, unsigned int)",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
+        },
+        {
           "export_symbol": "__library_export_libcalls__Z16flaglock_trylockP7TimeoutP13FlagLockState",
           "function": "flaglock_trylock(Timeout*, FlagLockState*)",
           "kind": "LibraryFunction",
@@ -235,37 +246,18 @@
           "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
         },
         {
-          "export_symbol": "__library_export_libcalls__Z20debug_report_failurePKcS0_S0_iS0_P19DebugFormatArgumentj",
-          "function": "debug_report_failure(char const*, char const*, char const*, int, char const*, DebugFormatArgument*, unsigned int)",
-          "kind": "LibraryFunction",
-          "provided_by": "build/cheriot/cheriot/release/debug.library"
-        },
-        {
-          "compartment_name": "sched",
-          "export_symbol": "__export_sched__Z16futex_timed_waitP7TimeoutPKjj14FutexWaitFlags",
-          "function": "futex_timed_wait(Timeout*, unsigned int const*, unsigned int, FutexWaitFlags)",
-          "kind": "CompartmentExport",
-          "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
-        },
-        {
-          "export_symbol": "__library_export_libcalls__Z23debug_log_message_writePKcS0_P19DebugFormatArgumentj",
-          "function": "debug_log_message_write(char const*, char const*, DebugFormatArgument*, unsigned int)",
-          "kind": "LibraryFunction",
-          "provided_by": "build/cheriot/cheriot/release/debug.library"
-        },
-        {
-          "compartment_name": "sched",
-          "export_symbol": "__export_sched__Z12thread_sleepP7Timeout",
-          "function": "thread_sleep(Timeout*)",
-          "kind": "CompartmentExport",
-          "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
-        },
-        {
           "compartment_name": "software_revoker",
           "export_symbol": "__export_software_revoker__Z17revoker_epoch_getv",
           "function": "revoker_epoch_get()",
           "kind": "CompartmentExport",
           "provided_by": "build/cheriot/cheriot/release/cheriot.software_revoker.compartment"
+        },
+        {
+          "compartment_name": "sched",
+          "export_symbol": "__export_sched__Z12thread_sleepP7Timeoutj",
+          "function": "thread_sleep(Timeout*, unsigned int)",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
         },
         {
           "export_symbol": "__library_export_libcalls__Z13thread_id_getv",
@@ -293,8 +285,8 @@
           {
             "file": "build/cheriot/cheriot/release/allocator_test.compartment",
             "section_name": ".text",
-            "sha256": "634269afc59a22d449bdecb5c0b63dac9b1c1b81966b4a5904520b63bd4b35b9",
-            "size": 8028
+            "sha256": "1dcb56c01f427143b9d654996c3dcd6871a16ed25280cfb614894bad8cb60bac",
+            "size": 10430
           },
           {
             "file": "build/cheriot/cheriot/release/allocator_test.compartment",
@@ -305,13 +297,13 @@
           {
             "file": "build/cheriot/cheriot/release/allocator_test.compartment",
             "section_name": ".rodata",
-            "sha256": "611de35657c82a5cf2e097b477f4a71a2ac83964abb1f8a6862c433af5bfdd9e",
-            "size": 3360
+            "sha256": "91824071c5caf717365c4ff2d336f2f74fa305b314d3606b5cf7fd78ddaf57b1",
+            "size": 4952
           }
         ],
         "name": ".allocator_test_code",
         "output": {
-          "sha256": "c6a5eb0c8569f473bddaa70556a32b97a5da04cb9b00de3cb3393159cd3eb09b"
+          "sha256": "d29cbb5b7682aff611ecdaa4147b95d0e9e31f964019d9447f722806566d2056"
         }
       },
       "exports": [
@@ -321,12 +313,17 @@
           "kind": "SealingKey"
         },
         {
+          "export_symbol": "__export.sealing_type.allocator_test.wrongSealingKey",
+          "exported": true,
+          "kind": "SealingKey"
+        },
+        {
           "export_symbol": "__export_allocator_test__Z14test_allocatorv",
           "exported": true,
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 0,
-          "start_offset": 376
+          "start_offset": 416
         },
         {
           "export_symbol": "__export_allocator_test__ZN11thread_pool6detail20wrap_callback_lambdaIZN12_GLOBAL__N_112test_hazardsEvE3$_1EEvPv",
@@ -334,7 +331,7 @@
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 1,
-          "start_offset": 5856
+          "start_offset": 8336
         },
         {
           "export_symbol": "__export_allocator_test__ZN11thread_pool6detail22wrap_callback_functionIZN12_GLOBAL__N_123test_blocking_allocatorEvE3$_0EEvPv",
@@ -342,7 +339,7 @@
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 0,
-          "start_offset": 7482
+          "start_offset": 9906
         }
       ],
       "imports": [
@@ -367,7 +364,22 @@
           }
         },
         {
+          "contents": "00000000 00000000 00000000 00000000 00000000 00000000",
+          "kind": "SealedObject",
+          "sealing_type": {
+            "compartment": "alloc",
+            "key": "MallocKey",
+            "provided_by": "build/cheriot/cheriot/release/cheriot.allocator.compartment",
+            "symbol": "__export.sealing_type.alloc.MallocKey"
+          }
+        },
+        {
           "export_symbol": "__export.sealing_type.allocator_test.sealingTest",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/allocator_test.compartment"
+        },
+        {
+          "export_symbol": "__export.sealing_type.allocator_test.wrongSealingKey",
           "kind": "CompartmentExport",
           "provided_by": "build/cheriot/cheriot/release/allocator_test.compartment"
         },
@@ -423,6 +435,13 @@
         },
         {
           "compartment_name": "alloc",
+          "export_symbol": "__export_alloc__Z19heap_allocate_arrayP7TimeoutP10SObjStructjjj",
+          "function": "heap_allocate_array(Timeout*, SObjStruct*, unsigned int, unsigned int, unsigned int)",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/cheriot.allocator.compartment"
+        },
+        {
+          "compartment_name": "alloc",
           "export_symbol": "__export_alloc__Z10heap_claimP10SObjStructPv",
           "function": "heap_claim(SObjStruct*, void*)",
           "kind": "CompartmentExport",
@@ -437,8 +456,36 @@
         },
         {
           "compartment_name": "alloc",
+          "export_symbol": "__export_alloc__Z21heap_quarantine_emptyv",
+          "function": "heap_quarantine_empty()",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/cheriot.allocator.compartment"
+        },
+        {
+          "compartment_name": "alloc",
+          "export_symbol": "__export_alloc__Z21token_obj_can_destroyP10SObjStructP10SKeyStructS0_",
+          "function": "token_obj_can_destroy(SObjStruct*, SKeyStruct*, SObjStruct*)",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/cheriot.allocator.compartment"
+        },
+        {
+          "compartment_name": "sched",
+          "export_symbol": "__export_sched__Z16futex_timed_waitP7TimeoutPKjjj",
+          "function": "futex_timed_wait(Timeout*, unsigned int const*, unsigned int, unsigned int)",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
+        },
+        {
+          "compartment_name": "alloc",
           "export_symbol": "__export_alloc__Z13token_key_newv",
           "function": "token_key_new()",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/cheriot.allocator.compartment"
+        },
+        {
+          "compartment_name": "alloc",
+          "export_symbol": "__export_alloc__Z13heap_allocateP7TimeoutP10SObjStructjj",
+          "function": "heap_allocate(Timeout*, SObjStruct*, unsigned int, unsigned int)",
           "kind": "CompartmentExport",
           "provided_by": "build/cheriot/cheriot/release/cheriot.allocator.compartment"
         },
@@ -463,31 +510,10 @@
           "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
         },
         {
-          "compartment_name": "alloc",
-          "export_symbol": "__export_alloc__Z13heap_allocateP7TimeoutP10SObjStructj",
-          "function": "heap_allocate(Timeout*, SObjStruct*, unsigned int)",
-          "kind": "CompartmentExport",
-          "provided_by": "build/cheriot/cheriot/release/cheriot.allocator.compartment"
-        },
-        {
           "export_symbol": "__library_export_libcalls__Z20debug_report_failurePKcS0_S0_iS0_P19DebugFormatArgumentj",
           "function": "debug_report_failure(char const*, char const*, char const*, int, char const*, DebugFormatArgument*, unsigned int)",
           "kind": "LibraryFunction",
           "provided_by": "build/cheriot/cheriot/release/debug.library"
-        },
-        {
-          "compartment_name": "sched",
-          "export_symbol": "__export_sched__Z16futex_timed_waitP7TimeoutPKjj14FutexWaitFlags",
-          "function": "futex_timed_wait(Timeout*, unsigned int const*, unsigned int, FutexWaitFlags)",
-          "kind": "CompartmentExport",
-          "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
-        },
-        {
-          "compartment_name": "sched",
-          "export_symbol": "__export_sched__Z12thread_sleepP7Timeout",
-          "function": "thread_sleep(Timeout*)",
-          "kind": "CompartmentExport",
-          "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
         },
         {
           "export_symbol": "__library_export_libcalls__Z6memsetPvij",
@@ -500,6 +526,13 @@
           "function": "debug_log_message_write(char const*, char const*, DebugFormatArgument*, unsigned int)",
           "kind": "LibraryFunction",
           "provided_by": "build/cheriot/cheriot/release/debug.library"
+        },
+        {
+          "compartment_name": "sched",
+          "export_symbol": "__export_sched__Z12thread_sleepP7Timeoutj",
+          "function": "thread_sleep(Timeout*, unsigned int)",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
         },
         {
           "export_symbol": "__library_export_libcalls__Z15heap_claim_fastP7TimeoutPKvS2_",
@@ -938,7 +971,7 @@
         ],
         "name": ".check_pointer_test_code",
         "output": {
-          "sha256": "8167fb35351305a03d6cedb3d1ab20c1c9d223f7195b7e0bfced4d962285a30c"
+          "sha256": "1fa7c0c1b23b2d6844a09a8c5eb3841727d2a3f6d908409b3f4a19e627af7c01"
         }
       },
       "exports": [
@@ -996,7 +1029,7 @@
         ],
         "name": ".compartment_calls_inner_code",
         "output": {
-          "sha256": "f4f2ea45a13f9e3f5122a5139143d536bc1bd1b6db54e054b7c84c1e0d971466"
+          "sha256": "999fbeb70e5c2a513653673cdcd9f1b233002da4c92009ad4825a476412744ad"
         }
       },
       "exports": [
@@ -1104,7 +1137,7 @@
         ],
         "name": ".compartment_calls_inner_with_handler_code",
         "output": {
-          "sha256": "31060f0b4796c640266ba17640ae24878009529f240856ea3d0594b365072864"
+          "sha256": "474d633829d3da76a5da77f4f09fcedec3afaca0540db1c9beae72588d99ec2c"
         }
       },
       "exports": [
@@ -1156,7 +1189,7 @@
         ],
         "name": ".compartment_calls_test_code",
         "output": {
-          "sha256": "43b97a3120941d1deabaae5bbdfd83364c725b8265beeabb44f79639d31806b8"
+          "sha256": "faa645f24cc5c4691113ae9d04f7c925ed1dfa3007abf8a8af6d80b1c8eb1685"
         }
       },
       "exports": [
@@ -1265,13 +1298,13 @@
           {
             "file": "build/cheriot/cheriot/release/compartment_helpers.library",
             "section_name": ".text",
-            "sha256": "c587a45218c189472d6988d452dee7765fa0cecfbaaef3230f978277a45eb331",
-            "size": 572
+            "sha256": "0f290bb849e2ad770c6ada4e705182c6e51a50a5e93b1cd2faac621f0fa505b8",
+            "size": 580
           }
         ],
         "name": ".compartment_helpers_code",
         "output": {
-          "sha256": "9cb6c1946de7d863a680e9aeaeddfaec9f1126934fbff4dfdbc8c822821e7868"
+          "sha256": "7cd11ad186208dd437e546fb4e7f75c4bec0f755f974ceeaad9dfd5ddb71da14"
         }
       },
       "exports": [
@@ -1289,7 +1322,7 @@
           "interrupt_status": "inherit",
           "kind": "Function",
           "register_arguments": 4,
-          "start_offset": 390
+          "start_offset": 398
         },
         {
           "export_symbol": "__library_export_libcalls__Z21check_timeout_pointerPK7Timeout",
@@ -1297,18 +1330,19 @@
           "interrupt_status": "inherit",
           "kind": "Function",
           "register_arguments": 1,
-          "start_offset": 510
+          "start_offset": 518
         }
       ],
       "imports": [
         {
-          "kind": "MMIO",
+          "kind": "SharedObject",
           "length": 4,
           "permits_load": true,
           "permits_load_mutable": false,
           "permits_load_store_capabilities": false,
           "permits_store": false,
-          "start": 2147595624
+          "shared_object": "allocator_epoch",
+          "start": 2147604608
         },
         {
           "export_symbol": "__library_export_libcalls__Z28switcher_thread_hazard_slotsv",
@@ -1318,8 +1352,8 @@
         },
         {
           "compartment_name": "sched",
-          "export_symbol": "__export_sched__Z16futex_timed_waitP7TimeoutPKjj14FutexWaitFlags",
-          "function": "futex_timed_wait(Timeout*, unsigned int const*, unsigned int, FutexWaitFlags)",
+          "export_symbol": "__export_sched__Z16futex_timed_waitP7TimeoutPKjjj",
+          "function": "futex_timed_wait(Timeout*, unsigned int const*, unsigned int, unsigned int)",
           "kind": "CompartmentExport",
           "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
         },
@@ -1336,13 +1370,13 @@
           {
             "file": "build/.objs/cheriot.switcher/cheriot/cheriot/release/__/sdk/core/switcher/entry.S.o",
             "section_name": ".text",
-            "sha256": "227448ee769453aa0c96b2751fc6c2b53df1df6a47bcbe64518e303c4054ff2a",
-            "size": 1382
+            "sha256": "bf15118cac9b4c7ac9fc72c829ced94f77698ee7686a7516208a213b5b705e72",
+            "size": 1406
           }
         ],
         "name": "compartment_switcher_code",
         "output": {
-          "sha256": "ce8d8c5a4492f3164605676ec9e00bad8a9380a58419a45af2290ecad8bac8ec"
+          "sha256": "33dbcb42ef02fde7ad7279fbd2307dacabf92216e3e3b8ba63d9740b7f39db4f"
         }
       },
       "exports": [
@@ -1360,7 +1394,7 @@
           "interrupt_status": "disabled",
           "kind": "Function",
           "register_arguments": 0,
-          "start_offset": 1196
+          "start_offset": 1208
         },
         {
           "export_symbol": "__library_export_libcalls__Z22switcher_recover_stackv",
@@ -1368,7 +1402,7 @@
           "interrupt_status": "disabled",
           "kind": "Function",
           "register_arguments": 0,
-          "start_offset": 1224
+          "start_offset": 1236
         },
         {
           "export_symbol": "__library_export_libcalls__Z25switcher_interrupt_threadPv",
@@ -1376,7 +1410,7 @@
           "interrupt_status": "disabled",
           "kind": "Function",
           "register_arguments": 0,
-          "start_offset": 1240
+          "start_offset": 1252
         },
         {
           "export_symbol": "__library_export_libcalls__Z23switcher_current_threadv",
@@ -1384,7 +1418,7 @@
           "interrupt_status": "disabled",
           "kind": "Function",
           "register_arguments": 0,
-          "start_offset": 1336
+          "start_offset": 1348
         },
         {
           "export_symbol": "__library_export_libcalls__Z28switcher_thread_hazard_slotsv",
@@ -1392,7 +1426,7 @@
           "interrupt_status": "disabled",
           "kind": "Function",
           "register_arguments": 0,
-          "start_offset": 1364
+          "start_offset": 1376
         },
         {
           "export_symbol": "__library_export_libcalls__Z13thread_id_getv",
@@ -1400,7 +1434,15 @@
           "interrupt_status": "disabled",
           "kind": "Function",
           "register_arguments": 0,
-          "start_offset": 1372
+          "start_offset": 1384
+        },
+        {
+          "export_symbol": "__library_export_libcalls__Z25stack_lowest_used_addressv",
+          "exported": true,
+          "interrupt_status": "disabled",
+          "kind": "Function",
+          "register_arguments": 0,
+          "start_offset": 1400
         }
       ]
     },
@@ -1428,7 +1470,7 @@
         ],
         "name": ".crash_recovery_inner_code",
         "output": {
-          "sha256": "945583ac16720c78beee6a6f2db5d6c6d322f5b1da03bbefd65a68f5ea31826d"
+          "sha256": "a07920757c5c868cd999d5a8e8a8a461163ff8e058cddba982425802af388c5a"
         }
       },
       "exports": [
@@ -1486,7 +1528,7 @@
         ],
         "name": ".crash_recovery_outer_code",
         "output": {
-          "sha256": "9ea274eceb87e2aabf0b3e4faad949cf576ecab81703feab9b34c269659e1439"
+          "sha256": "7bf0379b58dad9767face8cfbb25268f4382be63f95f2a3ed972731f3e4a88d1"
         }
       },
       "exports": [
@@ -1545,7 +1587,7 @@
         ],
         "name": ".crash_recovery_test_code",
         "output": {
-          "sha256": "35e1f32f4a242ca10038b1527608190f33095f4bd77b3cda78425e2408aa6b32"
+          "sha256": "ea16ae1649f26492972209b205170de930613609dfbedfa5c51bfb3d51c65054"
         }
       },
       "exports": [
@@ -1599,7 +1641,7 @@
         ],
         "name": ".crt_code",
         "output": {
-          "sha256": "e23f090f8db2360a118790c4810915236cb655465ed2e4df64ac1672b43c5685"
+          "sha256": "1ceaed0e050d71c54b061f3b4bbffd5a922eac7ce69084b1b9495e43862d4bfb"
         }
       },
       "exports": [
@@ -1767,13 +1809,13 @@
           {
             "file": "build/cheriot/cheriot/release/cxxrt.library",
             "section_name": ".text",
-            "sha256": "f3b037b40ffdbc7436d2c17cd59b0a380bb573984c51a1a4b391073ac23a3817",
-            "size": 180
+            "sha256": "e1e8e65470867468d8cf4acb5e21d55a7e25482ab838451d000fa299345c6b5b",
+            "size": 148
           }
         ],
         "name": ".cxxrt_code",
         "output": {
-          "sha256": "fa15d6bfd1d30e6b527795984043521698d45190bd1b61b5ae41a6ee35515088"
+          "sha256": "f2d8a9b2dfbf38a25b150c02a8a07f6cf9bf4e5b270b7dfe8a31096047f20c1f"
         }
       },
       "exports": [
@@ -1791,7 +1833,7 @@
           "interrupt_status": "disabled",
           "kind": "Function",
           "register_arguments": 1,
-          "start_offset": 128
+          "start_offset": 122
         },
         {
           "export_symbol": "__library_export_libcalls___cxa_atexit",
@@ -1799,21 +1841,21 @@
           "interrupt_status": "disabled",
           "kind": "Function",
           "register_arguments": 0,
-          "start_offset": 200
+          "start_offset": 168
         }
       ],
       "imports": [
         {
           "compartment_name": "sched",
-          "export_symbol": "__export_sched__Z10futex_wakePjj",
-          "function": "futex_wake(unsigned int*, unsigned int)",
+          "export_symbol": "__export_sched__Z16futex_timed_waitP7TimeoutPKjjj",
+          "function": "futex_timed_wait(Timeout*, unsigned int const*, unsigned int, unsigned int)",
           "kind": "CompartmentExport",
           "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
         },
         {
           "compartment_name": "sched",
-          "export_symbol": "__export_sched__Z16futex_timed_waitP7TimeoutPKjj14FutexWaitFlags",
-          "function": "futex_timed_wait(Timeout*, unsigned int const*, unsigned int, FutexWaitFlags)",
+          "export_symbol": "__export_sched__Z10futex_wakePjj",
+          "function": "futex_wake(unsigned int*, unsigned int)",
           "kind": "CompartmentExport",
           "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
         }
@@ -1837,7 +1879,7 @@
         ],
         "name": ".debug_code",
         "output": {
-          "sha256": "bfe9de8cde56f3e37fc8e34100fa2be04582e89f5db8d81fea885c7694823939"
+          "sha256": "5f28333283a5f5f2fdc9a6142e1c0d552702a2b30fbee6903ae40bc52d5cc31c"
         }
       },
       "exports": [
@@ -1881,19 +1923,73 @@
         }
       ]
     },
+    "debug_test": {
+      "code": {
+        "inputs": [
+          {
+            "file": "build/cheriot/cheriot/release/debug_test.compartment",
+            "section_name": ".text",
+            "sha256": "7c83de0b937ca99774f8130923140e3a3a1848aa53d7c0aac1d6f29726f524a4",
+            "size": 282
+          },
+          {
+            "file": "build/cheriot/cheriot/release/debug_test.compartment",
+            "section_name": ".init_array",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "size": 0
+          },
+          {
+            "file": "build/cheriot/cheriot/release/debug_test.compartment",
+            "section_name": ".rodata",
+            "sha256": "bf0e8e163db01dcac672a0baf93bbdf94ab6dfa28304a1516803ecfdc4049d91",
+            "size": 228
+          }
+        ],
+        "name": ".debug_test_code",
+        "output": {
+          "sha256": "0b51c7ceb372c594018cab282f6f46568c446a69b435274e15c4f06f75952f03"
+        }
+      },
+      "exports": [
+        {
+          "export_symbol": "__export_debug_test__Z14test_debug_cxxv",
+          "exported": true,
+          "interrupt_status": "enabled",
+          "kind": "Function",
+          "register_arguments": 0,
+          "start_offset": 16
+        },
+        {
+          "export_symbol": "__export_debug_test__Z12test_debug_cv",
+          "exported": true,
+          "interrupt_status": "enabled",
+          "kind": "Function",
+          "register_arguments": 0,
+          "start_offset": 148
+        }
+      ],
+      "imports": [
+        {
+          "export_symbol": "__library_export_libcalls__Z23debug_log_message_writePKcS0_P19DebugFormatArgumentj",
+          "function": "debug_log_message_write(char const*, char const*, DebugFormatArgument*, unsigned int)",
+          "kind": "LibraryFunction",
+          "provided_by": "build/cheriot/cheriot/release/debug.library"
+        }
+      ]
+    },
     "event_group": {
       "code": {
         "inputs": [
           {
             "file": "build/cheriot/cheriot/release/event_group.library",
             "section_name": ".text",
-            "sha256": "7445f930122bb995c36b5b7108c4be491d0603d940cb5f5749c005ca4a5ed428",
-            "size": 1092
+            "sha256": "fd215792a75776fcfc351c08a9bd18991954e40b2cf05c0253d72fb1da7be9c2",
+            "size": 1180
           }
         ],
         "name": ".event_group_code",
         "output": {
-          "sha256": "f72d2a6035d737b6bf7c144653e01cb73df068ec39113e710beee2a31ea982e0"
+          "sha256": "7aa397902a9a0922565d98841a3e7650239d3a48391982e06b2d8faa9ed0849f"
         }
       },
       "exports": [
@@ -1903,7 +1999,7 @@
           "interrupt_status": "inherit",
           "kind": "Function",
           "register_arguments": 3,
-          "start_offset": 88
+          "start_offset": 96
         },
         {
           "export_symbol": "__library_export_libcalls__Z15eventgroup_waitP7TimeoutP10EventGroupPjjbb",
@@ -1911,7 +2007,7 @@
           "interrupt_status": "inherit",
           "kind": "Function",
           "register_arguments": 6,
-          "start_offset": 194
+          "start_offset": 206
         },
         {
           "export_symbol": "__library_export_libcalls__Z16eventgroup_clearP7TimeoutP10EventGroupPjj",
@@ -1919,7 +2015,7 @@
           "interrupt_status": "inherit",
           "kind": "Function",
           "register_arguments": 4,
-          "start_offset": 566
+          "start_offset": 578
         },
         {
           "export_symbol": "__library_export_libcalls__Z14eventgroup_setP7TimeoutP10EventGroupPjj",
@@ -1927,7 +2023,7 @@
           "interrupt_status": "inherit",
           "kind": "Function",
           "register_arguments": 4,
-          "start_offset": 656
+          "start_offset": 668
         },
         {
           "export_symbol": "__library_export_libcalls__Z14eventgroup_getP10EventGroupPj",
@@ -1935,7 +2031,15 @@
           "interrupt_status": "inherit",
           "kind": "Function",
           "register_arguments": 2,
-          "start_offset": 988
+          "start_offset": 1000
+        },
+        {
+          "export_symbol": "__library_export_libcalls__Z24eventgroup_destroy_forceP10SObjStructP10EventGroup",
+          "exported": true,
+          "interrupt_status": "inherit",
+          "kind": "Function",
+          "register_arguments": 2,
+          "start_offset": 1008
         },
         {
           "export_symbol": "__library_export_libcalls__Z18eventgroup_destroyP10SObjStructP10EventGroup",
@@ -1943,7 +2047,7 @@
           "interrupt_status": "inherit",
           "kind": "Function",
           "register_arguments": 2,
-          "start_offset": 996
+          "start_offset": 1168
         }
       ],
       "imports": [
@@ -1966,6 +2070,20 @@
           "provided_by": "build/cheriot/cheriot/release/cheriot.allocator.compartment"
         },
         {
+          "compartment_name": "sched",
+          "export_symbol": "__export_sched__Z16futex_timed_waitP7TimeoutPKjjj",
+          "function": "futex_timed_wait(Timeout*, unsigned int const*, unsigned int, unsigned int)",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
+        },
+        {
+          "compartment_name": "alloc",
+          "export_symbol": "__export_alloc__Z13heap_allocateP7TimeoutP10SObjStructjj",
+          "function": "heap_allocate(Timeout*, SObjStruct*, unsigned int, unsigned int)",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/cheriot.allocator.compartment"
+        },
+        {
           "export_symbol": "__library_export_libcalls__Z16flaglock_trylockP7TimeoutP13FlagLockState",
           "function": "flaglock_trylock(Timeout*, FlagLockState*)",
           "kind": "LibraryFunction",
@@ -1979,20 +2097,6 @@
           "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
         },
         {
-          "compartment_name": "alloc",
-          "export_symbol": "__export_alloc__Z13heap_allocateP7TimeoutP10SObjStructj",
-          "function": "heap_allocate(Timeout*, SObjStruct*, unsigned int)",
-          "kind": "CompartmentExport",
-          "provided_by": "build/cheriot/cheriot/release/cheriot.allocator.compartment"
-        },
-        {
-          "compartment_name": "sched",
-          "export_symbol": "__export_sched__Z16futex_timed_waitP7TimeoutPKjj14FutexWaitFlags",
-          "function": "futex_timed_wait(Timeout*, unsigned int const*, unsigned int, FutexWaitFlags)",
-          "kind": "CompartmentExport",
-          "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
-        },
-        {
           "export_symbol": "__library_export_libcalls__Z13thread_id_getv",
           "function": "thread_id_get()",
           "kind": "LibraryFunction",
@@ -2002,6 +2106,12 @@
           "export_symbol": "__library_export_libcalls___atomic_load_4",
           "kind": "LibraryFunction",
           "provided_by": "build/cheriot/cheriot/release/atomic4.library"
+        },
+        {
+          "export_symbol": "__library_export_libcalls__Z32flaglock_upgrade_for_destructionP13FlagLockState",
+          "function": "flaglock_upgrade_for_destruction(FlagLockState*)",
+          "kind": "LibraryFunction",
+          "provided_by": "build/cheriot/cheriot/release/locks.library"
         },
         {
           "compartment_name": "sched",
@@ -2036,7 +2146,7 @@
         ],
         "name": ".eventgroup_test_code",
         "output": {
-          "sha256": "2a56feae9234711036ec5235b998e6bf40372721a65ca27327c5844c4f022fd7"
+          "sha256": "a21ac89f97ff2fe89397ea310c8ba72138451a26f1b3ac1aab0a08538db16307"
         }
       },
       "exports": [
@@ -2112,6 +2222,13 @@
           "provided_by": "build/cheriot/cheriot/release/event_group.library"
         },
         {
+          "compartment_name": "sched",
+          "export_symbol": "__export_sched__Z16futex_timed_waitP7TimeoutPKjjj",
+          "function": "futex_timed_wait(Timeout*, unsigned int const*, unsigned int, unsigned int)",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
+        },
+        {
           "compartment_name": "alloc",
           "export_symbol": "__export_alloc__Z13token_key_newv",
           "function": "token_key_new()",
@@ -2154,13 +2271,6 @@
           "function": "debug_report_failure(char const*, char const*, char const*, int, char const*, DebugFormatArgument*, unsigned int)",
           "kind": "LibraryFunction",
           "provided_by": "build/cheriot/cheriot/release/debug.library"
-        },
-        {
-          "compartment_name": "sched",
-          "export_symbol": "__export_sched__Z16futex_timed_waitP7TimeoutPKjj14FutexWaitFlags",
-          "function": "futex_timed_wait(Timeout*, unsigned int const*, unsigned int, FutexWaitFlags)",
-          "kind": "CompartmentExport",
-          "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
         },
         {
           "export_symbol": "__library_export_libcalls__Z17eventgroup_createP7TimeoutP10SObjStructPP10EventGroup",
@@ -2262,8 +2372,8 @@
           {
             "file": "build/cheriot/cheriot/release/futex_test.compartment",
             "section_name": ".text",
-            "sha256": "3d72cc7d02c500adf3a07d775e85290413fd9566cabbfed05c1d4e07b618d6d5",
-            "size": 2750
+            "sha256": "780940934d0357601fcf82dd996a797fdf88259da526d2f9cfaaddd82333f3bf",
+            "size": 2754
           },
           {
             "file": "build/cheriot/cheriot/release/futex_test.compartment",
@@ -2280,7 +2390,7 @@
         ],
         "name": ".futex_test_code",
         "output": {
-          "sha256": "87609030ec32f93dec615e83637986c7ead30c7a7b509c111531fe904eb6fe67"
+          "sha256": "71ffa33ecdc9b53f6e58dc722930ee512d246141fcaf783ba56ae4f9de6392da"
         }
       },
       "exports": [
@@ -2298,7 +2408,7 @@
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 0,
-          "start_offset": 2064
+          "start_offset": 2066
         },
         {
           "export_symbol": "__export_futex_test__ZN11thread_pool6detail22wrap_callback_functionIZ10test_futexvE3$_1EEvPv",
@@ -2306,7 +2416,7 @@
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 0,
-          "start_offset": 2508
+          "start_offset": 2510
         }
       ],
       "imports": [
@@ -2348,6 +2458,13 @@
         },
         {
           "compartment_name": "sched",
+          "export_symbol": "__export_sched__Z16futex_timed_waitP7TimeoutPKjjj",
+          "function": "futex_timed_wait(Timeout*, unsigned int const*, unsigned int, unsigned int)",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
+        },
+        {
+          "compartment_name": "sched",
           "export_symbol": "__export_sched__Z10futex_wakePjj",
           "function": "futex_wake(unsigned int*, unsigned int)",
           "kind": "CompartmentExport",
@@ -2360,30 +2477,17 @@
           "provided_by": "build/cheriot/cheriot/release/debug.library"
         },
         {
-          "compartment_name": "sched",
-          "export_symbol": "__export_sched__Z16futex_timed_waitP7TimeoutPKjj14FutexWaitFlags",
-          "function": "futex_timed_wait(Timeout*, unsigned int const*, unsigned int, FutexWaitFlags)",
-          "kind": "CompartmentExport",
-          "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
-        },
-        {
-          "compartment_name": "sched",
-          "export_symbol": "__export_sched__Z12thread_sleepP7Timeout",
-          "function": "thread_sleep(Timeout*)",
-          "kind": "CompartmentExport",
-          "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
-        },
-        {
           "export_symbol": "__library_export_libcalls__Z23debug_log_message_writePKcS0_P19DebugFormatArgumentj",
           "function": "debug_log_message_write(char const*, char const*, DebugFormatArgument*, unsigned int)",
           "kind": "LibraryFunction",
           "provided_by": "build/cheriot/cheriot/release/debug.library"
         },
         {
-          "export_symbol": "__library_export_libcalls__Z13thread_id_getv",
-          "function": "thread_id_get()",
-          "kind": "LibraryFunction",
-          "provided_by": "build/.objs/cheriot.switcher/cheriot/cheriot/release/__/sdk/core/switcher/entry.S.o"
+          "compartment_name": "sched",
+          "export_symbol": "__export_sched__Z12thread_sleepP7Timeoutj",
+          "function": "thread_sleep(Timeout*, unsigned int)",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
         },
         {
           "compartment_name": "sched",
@@ -2398,11 +2502,100 @@
           "provided_by": "build/cheriot/cheriot/release/atomic4.library"
         },
         {
+          "export_symbol": "__library_export_libcalls__Z13thread_id_getv",
+          "function": "thread_id_get()",
+          "kind": "LibraryFunction",
+          "provided_by": "build/.objs/cheriot.switcher/cheriot/cheriot/release/__/sdk/core/switcher/entry.S.o"
+        },
+        {
           "compartment_name": "sched",
           "export_symbol": "__export_sched__Z19interrupt_futex_getP10SObjStruct",
           "function": "interrupt_futex_get(SObjStruct*)",
           "kind": "CompartmentExport",
           "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
+        }
+      ]
+    },
+    "list_test": {
+      "code": {
+        "inputs": [
+          {
+            "file": "build/cheriot/cheriot/release/list_test.compartment",
+            "section_name": ".text",
+            "sha256": "164dda4dc14d5dec73707a0267d30907d56db98ba44204b566f24bf05c15bea3",
+            "size": 1654
+          },
+          {
+            "file": "build/cheriot/cheriot/release/list_test.compartment",
+            "section_name": ".init_array",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "size": 0
+          },
+          {
+            "file": "build/cheriot/cheriot/release/list_test.compartment",
+            "section_name": ".rodata",
+            "sha256": "e6d5d118540db077b308d0b96ed47ad4c16a786c9a3b2373bb6bcf8732482160",
+            "size": 970
+          }
+        ],
+        "name": ".list_test_code",
+        "output": {
+          "sha256": "4444a84591c330b2ad7505627fed8a2c706397ef338f16267aa63ab199b19a9a"
+        }
+      },
+      "exports": [
+        {
+          "export_symbol": "__export_list_test__Z9test_listv",
+          "exported": true,
+          "interrupt_status": "enabled",
+          "kind": "Function",
+          "register_arguments": 0,
+          "start_offset": 56
+        }
+      ],
+      "imports": [
+        {
+          "contents": "00100000 00000000 00000000 00000000 00000000 00000000",
+          "kind": "SealedObject",
+          "sealing_type": {
+            "compartment": "alloc",
+            "key": "MallocKey",
+            "provided_by": "build/cheriot/cheriot/release/cheriot.allocator.compartment",
+            "symbol": "__export.sealing_type.alloc.MallocKey"
+          }
+        },
+        {
+          "compartment_name": "alloc",
+          "export_symbol": "__export_alloc__Z9heap_freeP10SObjStructPv",
+          "function": "heap_free(SObjStruct*, void*)",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/cheriot.allocator.compartment"
+        },
+        {
+          "compartment_name": "alloc",
+          "export_symbol": "__export_alloc__Z13heap_allocateP7TimeoutP10SObjStructjj",
+          "function": "heap_allocate(Timeout*, SObjStruct*, unsigned int, unsigned int)",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/cheriot.allocator.compartment"
+        },
+        {
+          "export_symbol": "__library_export_libcalls__Z20debug_report_failurePKcS0_S0_iS0_P19DebugFormatArgumentj",
+          "function": "debug_report_failure(char const*, char const*, char const*, int, char const*, DebugFormatArgument*, unsigned int)",
+          "kind": "LibraryFunction",
+          "provided_by": "build/cheriot/cheriot/release/debug.library"
+        },
+        {
+          "export_symbol": "__library_export_libcalls__Z23debug_log_message_writePKcS0_P19DebugFormatArgumentj",
+          "function": "debug_log_message_write(char const*, char const*, DebugFormatArgument*, unsigned int)",
+          "kind": "LibraryFunction",
+          "provided_by": "build/cheriot/cheriot/release/debug.library"
+        },
+        {
+          "compartment_name": "alloc",
+          "export_symbol": "__export_alloc__Z20heap_quota_remainingP10SObjStruct",
+          "function": "heap_quota_remaining(SObjStruct*)",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/cheriot.allocator.compartment"
         }
       ]
     },
@@ -2412,13 +2605,13 @@
           {
             "file": "build/cheriot/cheriot/release/locks.library",
             "section_name": ".text",
-            "sha256": "cf9a8b54480dc368f7e978f05af4783314da489e866645a59803ebe48d7ffa90",
-            "size": 1100
+            "sha256": "c5681deef71037bcd6fa5f203bf292ad4a6f8d5a1965db8065b184e8842b0ef9",
+            "size": 1050
           }
         ],
         "name": ".locks_code",
         "output": {
-          "sha256": "57bb2d707b8fd6c947f27533710582b06aba3771187103989dc887bc5dc87f36"
+          "sha256": "cbccee54a5584625cab96ec107c237edb06f95b85ac297f9dc408689d578f297"
         }
       },
       "exports": [
@@ -2452,7 +2645,7 @@
           "interrupt_status": "inherit",
           "kind": "Function",
           "register_arguments": 1,
-          "start_offset": 406
+          "start_offset": 408
         },
         {
           "export_symbol": "__library_export_libcalls__Z15ticketlock_lockP15TicketLockState",
@@ -2460,7 +2653,7 @@
           "interrupt_status": "inherit",
           "kind": "Function",
           "register_arguments": 1,
-          "start_offset": 540
+          "start_offset": 490
         },
         {
           "export_symbol": "__library_export_libcalls__Z17ticketlock_unlockP15TicketLockState",
@@ -2468,7 +2661,7 @@
           "interrupt_status": "inherit",
           "kind": "Function",
           "register_arguments": 1,
-          "start_offset": 648
+          "start_offset": 598
         },
         {
           "export_symbol": "__library_export_libcalls__Z22recursivemutex_trylockP7TimeoutP19RecursiveMutexState",
@@ -2476,7 +2669,7 @@
           "interrupt_status": "inherit",
           "kind": "Function",
           "register_arguments": 2,
-          "start_offset": 730
+          "start_offset": 680
         },
         {
           "export_symbol": "__library_export_libcalls__Z21recursivemutex_unlockP19RecursiveMutexState",
@@ -2484,7 +2677,7 @@
           "interrupt_status": "inherit",
           "kind": "Function",
           "register_arguments": 1,
-          "start_offset": 828
+          "start_offset": 778
         },
         {
           "export_symbol": "__library_export_libcalls__Z13semaphore_getP7TimeoutP22CountingSemaphoreState",
@@ -2492,7 +2685,7 @@
           "interrupt_status": "inherit",
           "kind": "Function",
           "register_arguments": 2,
-          "start_offset": 860
+          "start_offset": 810
         },
         {
           "export_symbol": "__library_export_libcalls__Z13semaphore_putP22CountingSemaphoreState",
@@ -2500,12 +2693,12 @@
           "interrupt_status": "inherit",
           "kind": "Function",
           "register_arguments": 1,
-          "start_offset": 1034
+          "start_offset": 984
         }
       ],
       "imports": [
         {
-          "export_symbol": "__library_export_libcalls___atomic_exchange_4",
+          "export_symbol": "__library_export_libcalls___atomic_fetch_and_4",
           "kind": "LibraryFunction",
           "provided_by": "build/cheriot/cheriot/release/atomic4.library"
         },
@@ -2513,6 +2706,13 @@
           "export_symbol": "__library_export_libcalls___atomic_fetch_or_4",
           "kind": "LibraryFunction",
           "provided_by": "build/cheriot/cheriot/release/atomic4.library"
+        },
+        {
+          "compartment_name": "sched",
+          "export_symbol": "__export_sched__Z16futex_timed_waitP7TimeoutPKjjj",
+          "function": "futex_timed_wait(Timeout*, unsigned int const*, unsigned int, unsigned int)",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
         },
         {
           "export_symbol": "__library_export_libcalls___atomic_compare_exchange_4",
@@ -2528,13 +2728,6 @@
           "compartment_name": "sched",
           "export_symbol": "__export_sched__Z10futex_wakePjj",
           "function": "futex_wake(unsigned int*, unsigned int)",
-          "kind": "CompartmentExport",
-          "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
-        },
-        {
-          "compartment_name": "sched",
-          "export_symbol": "__export_sched__Z16futex_timed_waitP7TimeoutPKjj14FutexWaitFlags",
-          "function": "futex_timed_wait(Timeout*, unsigned int const*, unsigned int, FutexWaitFlags)",
           "kind": "CompartmentExport",
           "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
         },
@@ -2557,8 +2750,8 @@
           {
             "file": "build/cheriot/cheriot/release/locks_test.compartment",
             "section_name": ".text",
-            "sha256": "8a6506b58a910941754ff95899ad2159b46745d3ce48995527bacef15918b492",
-            "size": 6334
+            "sha256": "a588ca28f03bf199877a35f1d8cc31f86183e3375e2296e4ab68492fa622cf1a",
+            "size": 7566
           },
           {
             "file": "build/cheriot/cheriot/release/locks_test.compartment",
@@ -2569,13 +2762,13 @@
           {
             "file": "build/cheriot/cheriot/release/locks_test.compartment",
             "section_name": ".rodata",
-            "sha256": "1588ea9a3dccfd7cb8e80cf8da77c16288f8fa76a8c914659991570099f99306",
-            "size": 2275
+            "sha256": "f96d63f39b46a1113d1dbc5829f24d55debbbb25e92b694b24238803b092b338",
+            "size": 2467
           }
         ],
         "name": ".locks_test_code",
         "output": {
-          "sha256": "345219ce1a10146b949dd21f25520c198931ecd9b7a8f40e3a436e27db49a307"
+          "sha256": "d14389f5c20ca4b96e9220dff619cb50185652dfeb35b5c4146b9e881ef1b8c4"
         }
       },
       "exports": [
@@ -2585,47 +2778,63 @@
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 0,
-          "start_offset": 280
+          "start_offset": 304
         },
         {
-          "export_symbol": "__export_locks_test__ZN11thread_pool6detail20wrap_callback_lambdaIZN12_GLOBAL__N_125test_ticket_lock_orderingEvE3$_1EEvPv",
+          "export_symbol": "__export_locks_test__ZN11thread_pool6detail20wrap_callback_lambdaIZN12_GLOBAL__N_124test_get_owner_thread_idER15FlagLockGenericILb1EEE3$_1EEvPv",
           "exported": false,
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 1,
-          "start_offset": 3784
+          "start_offset": 4376
         },
         {
-          "export_symbol": "__export_locks_test__ZN11thread_pool6detail20wrap_callback_lambdaIZN12_GLOBAL__N_125test_ticket_lock_orderingEvE3$_2EEvPv",
+          "export_symbol": "__export_locks_test__ZN11thread_pool6detail20wrap_callback_lambdaIZN12_GLOBAL__N_120test_flaglock_unlockEvE3$_0EEvPv",
           "exported": false,
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 1,
-          "start_offset": 4118
+          "start_offset": 4704
         },
         {
-          "export_symbol": "__export_locks_test__ZN11thread_pool6detail20wrap_callback_lambdaIZN12_GLOBAL__N_125test_ticket_lock_overflowEvE3$_3EEvPv",
+          "export_symbol": "__export_locks_test__ZN11thread_pool6detail20wrap_callback_lambdaIZN12_GLOBAL__N_125test_ticket_lock_orderingEvE3$_3EEvPv",
           "exported": false,
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 1,
-          "start_offset": 4460
+          "start_offset": 5092
         },
         {
-          "export_symbol": "__export_locks_test__ZN11thread_pool6detail20wrap_callback_lambdaIZN12_GLOBAL__N_125test_ticket_lock_overflowEvE3$_4EEvPv",
+          "export_symbol": "__export_locks_test__ZN11thread_pool6detail20wrap_callback_lambdaIZN12_GLOBAL__N_125test_ticket_lock_orderingEvE3$_4EEvPv",
           "exported": false,
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 1,
-          "start_offset": 4706
+          "start_offset": 5426
         },
         {
-          "export_symbol": "__export_locks_test__ZN11thread_pool6detail22wrap_callback_functionIZN12_GLOBAL__N_120test_recursive_mutexEvE3$_0EEvPv",
+          "export_symbol": "__export_locks_test__ZN11thread_pool6detail20wrap_callback_lambdaIZN12_GLOBAL__N_125test_ticket_lock_overflowEvE3$_5EEvPv",
+          "exported": false,
+          "interrupt_status": "enabled",
+          "kind": "Function",
+          "register_arguments": 1,
+          "start_offset": 5768
+        },
+        {
+          "export_symbol": "__export_locks_test__ZN11thread_pool6detail20wrap_callback_lambdaIZN12_GLOBAL__N_125test_ticket_lock_overflowEvE3$_6EEvPv",
+          "exported": false,
+          "interrupt_status": "enabled",
+          "kind": "Function",
+          "register_arguments": 1,
+          "start_offset": 6014
+        },
+        {
+          "export_symbol": "__export_locks_test__ZN11thread_pool6detail22wrap_callback_functionIZN12_GLOBAL__N_120test_recursive_mutexEvE3$_2EEvPv",
           "exported": false,
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 0,
-          "start_offset": 4918
+          "start_offset": 6232
         },
         {
           "export_symbol": "__export_locks_test__ZN11thread_pool6detail20wrap_callback_lambdaIZN12_GLOBAL__N_19test_lockI15FlagLockGenericILb0EEEEvRT_EUlvE_EEvPv",
@@ -2633,7 +2842,7 @@
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 1,
-          "start_offset": 5382
+          "start_offset": 6648
         },
         {
           "export_symbol": "__export_locks_test__ZN11thread_pool6detail20wrap_callback_lambdaIZN12_GLOBAL__N_19test_lockI15FlagLockGenericILb1EEEEvRT_EUlvE_EEvPv",
@@ -2641,7 +2850,7 @@
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 1,
-          "start_offset": 5682
+          "start_offset": 6878
         },
         {
           "export_symbol": "__export_locks_test__ZN11thread_pool6detail20wrap_callback_lambdaIZN12_GLOBAL__N_19test_lockI10TicketLockEEvRT_EUlvE_EEvPv",
@@ -2649,7 +2858,7 @@
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 1,
-          "start_offset": 5912
+          "start_offset": 7112
         },
         {
           "export_symbol": "__export_locks_test__ZN11thread_pool6detail20wrap_callback_lambdaIZN12_GLOBAL__N_126test_destruct_lock_wake_upI15FlagLockGenericILb0EEEEvRT_EUlvE_EEvPv",
@@ -2657,7 +2866,7 @@
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 1,
-          "start_offset": 6152
+          "start_offset": 7408
         },
         {
           "export_symbol": "__export_locks_test__ZN11thread_pool6detail20wrap_callback_lambdaIZN12_GLOBAL__N_126test_destruct_lock_wake_upI15FlagLockGenericILb1EEEEvRT_EUlvE_EEvPv",
@@ -2665,7 +2874,7 @@
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 1,
-          "start_offset": 6436
+          "start_offset": 7692
         }
       ],
       "imports": [
@@ -2711,20 +2920,6 @@
         },
         {
           "compartment_name": "locks_test",
-          "export_symbol": "__export_locks_test__ZN11thread_pool6detail20wrap_callback_lambdaIZN12_GLOBAL__N_125test_ticket_lock_orderingEvE3$_1EEvPv",
-          "function": "void thread_pool::detail::wrap_callback_lambda<(anonymous namespace)::test_ticket_lock_ordering()::$_1>(void*)",
-          "kind": "CompartmentExport",
-          "provided_by": "build/cheriot/cheriot/release/locks_test.compartment"
-        },
-        {
-          "compartment_name": "locks_test",
-          "export_symbol": "__export_locks_test__ZN11thread_pool6detail20wrap_callback_lambdaIZN12_GLOBAL__N_125test_ticket_lock_orderingEvE3$_2EEvPv",
-          "function": "void thread_pool::detail::wrap_callback_lambda<(anonymous namespace)::test_ticket_lock_ordering()::$_2>(void*)",
-          "kind": "CompartmentExport",
-          "provided_by": "build/cheriot/cheriot/release/locks_test.compartment"
-        },
-        {
-          "compartment_name": "locks_test",
           "export_symbol": "__export_locks_test__ZN11thread_pool6detail20wrap_callback_lambdaIZN12_GLOBAL__N_19test_lockI15FlagLockGenericILb0EEEEvRT_EUlvE_EEvPv",
           "function": "void thread_pool::detail::wrap_callback_lambda<void (anonymous namespace)::test_lock<FlagLockGeneric<false> >(FlagLockGeneric<false>&)::'lambda'()>(void*)",
           "kind": "CompartmentExport",
@@ -2732,15 +2927,8 @@
         },
         {
           "compartment_name": "locks_test",
-          "export_symbol": "__export_locks_test__ZN11thread_pool6detail20wrap_callback_lambdaIZN12_GLOBAL__N_125test_ticket_lock_overflowEvE3$_4EEvPv",
-          "function": "void thread_pool::detail::wrap_callback_lambda<(anonymous namespace)::test_ticket_lock_overflow()::$_4>(void*)",
-          "kind": "CompartmentExport",
-          "provided_by": "build/cheriot/cheriot/release/locks_test.compartment"
-        },
-        {
-          "compartment_name": "locks_test",
-          "export_symbol": "__export_locks_test__ZN11thread_pool6detail20wrap_callback_lambdaIZN12_GLOBAL__N_125test_ticket_lock_overflowEvE3$_3EEvPv",
-          "function": "void thread_pool::detail::wrap_callback_lambda<(anonymous namespace)::test_ticket_lock_overflow()::$_3>(void*)",
+          "export_symbol": "__export_locks_test__ZN11thread_pool6detail20wrap_callback_lambdaIZN12_GLOBAL__N_125test_ticket_lock_overflowEvE3$_5EEvPv",
+          "function": "void thread_pool::detail::wrap_callback_lambda<(anonymous namespace)::test_ticket_lock_overflow()::$_5>(void*)",
           "kind": "CompartmentExport",
           "provided_by": "build/cheriot/cheriot/release/locks_test.compartment"
         },
@@ -2753,6 +2941,20 @@
         },
         {
           "compartment_name": "locks_test",
+          "export_symbol": "__export_locks_test__ZN11thread_pool6detail20wrap_callback_lambdaIZN12_GLOBAL__N_125test_ticket_lock_orderingEvE3$_3EEvPv",
+          "function": "void thread_pool::detail::wrap_callback_lambda<(anonymous namespace)::test_ticket_lock_ordering()::$_3>(void*)",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/locks_test.compartment"
+        },
+        {
+          "compartment_name": "locks_test",
+          "export_symbol": "__export_locks_test__ZN11thread_pool6detail20wrap_callback_lambdaIZN12_GLOBAL__N_125test_ticket_lock_orderingEvE3$_4EEvPv",
+          "function": "void thread_pool::detail::wrap_callback_lambda<(anonymous namespace)::test_ticket_lock_ordering()::$_4>(void*)",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/locks_test.compartment"
+        },
+        {
+          "compartment_name": "locks_test",
           "export_symbol": "__export_locks_test__ZN11thread_pool6detail20wrap_callback_lambdaIZN12_GLOBAL__N_126test_destruct_lock_wake_upI15FlagLockGenericILb1EEEEvRT_EUlvE_EEvPv",
           "function": "void thread_pool::detail::wrap_callback_lambda<void (anonymous namespace)::test_destruct_lock_wake_up<FlagLockGeneric<true> >(FlagLockGeneric<true>&)::'lambda'()>(void*)",
           "kind": "CompartmentExport",
@@ -2760,15 +2962,36 @@
         },
         {
           "compartment_name": "locks_test",
-          "export_symbol": "__export_locks_test__ZN11thread_pool6detail20wrap_callback_lambdaIZN12_GLOBAL__N_126test_destruct_lock_wake_upI15FlagLockGenericILb0EEEEvRT_EUlvE_EEvPv",
-          "function": "void thread_pool::detail::wrap_callback_lambda<void (anonymous namespace)::test_destruct_lock_wake_up<FlagLockGeneric<false> >(FlagLockGeneric<false>&)::'lambda'()>(void*)",
+          "export_symbol": "__export_locks_test__ZN11thread_pool6detail20wrap_callback_lambdaIZN12_GLOBAL__N_120test_flaglock_unlockEvE3$_0EEvPv",
+          "function": "void thread_pool::detail::wrap_callback_lambda<(anonymous namespace)::test_flaglock_unlock()::$_0>(void*)",
           "kind": "CompartmentExport",
           "provided_by": "build/cheriot/cheriot/release/locks_test.compartment"
         },
         {
           "compartment_name": "locks_test",
-          "export_symbol": "__export_locks_test__ZN11thread_pool6detail22wrap_callback_functionIZN12_GLOBAL__N_120test_recursive_mutexEvE3$_0EEvPv",
-          "function": "void thread_pool::detail::wrap_callback_function<(anonymous namespace)::test_recursive_mutex()::$_0>(void*)",
+          "export_symbol": "__export_locks_test__ZN11thread_pool6detail20wrap_callback_lambdaIZN12_GLOBAL__N_124test_get_owner_thread_idER15FlagLockGenericILb1EEE3$_1EEvPv",
+          "function": "void thread_pool::detail::wrap_callback_lambda<(anonymous namespace)::test_get_owner_thread_id(FlagLockGeneric<true>&)::$_1>(void*)",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/locks_test.compartment"
+        },
+        {
+          "compartment_name": "locks_test",
+          "export_symbol": "__export_locks_test__ZN11thread_pool6detail20wrap_callback_lambdaIZN12_GLOBAL__N_125test_ticket_lock_overflowEvE3$_6EEvPv",
+          "function": "void thread_pool::detail::wrap_callback_lambda<(anonymous namespace)::test_ticket_lock_overflow()::$_6>(void*)",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/locks_test.compartment"
+        },
+        {
+          "compartment_name": "locks_test",
+          "export_symbol": "__export_locks_test__ZN11thread_pool6detail22wrap_callback_functionIZN12_GLOBAL__N_120test_recursive_mutexEvE3$_2EEvPv",
+          "function": "void thread_pool::detail::wrap_callback_function<(anonymous namespace)::test_recursive_mutex()::$_2>(void*)",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/locks_test.compartment"
+        },
+        {
+          "compartment_name": "locks_test",
+          "export_symbol": "__export_locks_test__ZN11thread_pool6detail20wrap_callback_lambdaIZN12_GLOBAL__N_126test_destruct_lock_wake_upI15FlagLockGenericILb0EEEEvRT_EUlvE_EEvPv",
+          "function": "void thread_pool::detail::wrap_callback_lambda<void (anonymous namespace)::test_destruct_lock_wake_up<FlagLockGeneric<false> >(FlagLockGeneric<false>&)::'lambda'()>(void*)",
           "kind": "CompartmentExport",
           "provided_by": "build/cheriot/cheriot/release/locks_test.compartment"
         },
@@ -2845,16 +3068,16 @@
           "provided_by": "build/cheriot/cheriot/release/locks.library"
         },
         {
-          "export_symbol": "__library_export_libcalls__Z20debug_report_failurePKcS0_S0_iS0_P19DebugFormatArgumentj",
-          "function": "debug_report_failure(char const*, char const*, char const*, int, char const*, DebugFormatArgument*, unsigned int)",
-          "kind": "LibraryFunction",
-          "provided_by": "build/cheriot/cheriot/release/debug.library"
-        },
-        {
           "export_symbol": "__library_export_libcalls__Z17ticketlock_unlockP15TicketLockState",
           "function": "ticketlock_unlock(TicketLockState*)",
           "kind": "LibraryFunction",
           "provided_by": "build/cheriot/cheriot/release/locks.library"
+        },
+        {
+          "export_symbol": "__library_export_libcalls__Z20debug_report_failurePKcS0_S0_iS0_P19DebugFormatArgumentj",
+          "function": "debug_report_failure(char const*, char const*, char const*, int, char const*, DebugFormatArgument*, unsigned int)",
+          "kind": "LibraryFunction",
+          "provided_by": "build/cheriot/cheriot/release/debug.library"
         },
         {
           "export_symbol": "__library_export_libcalls__Z23debug_log_message_writePKcS0_P19DebugFormatArgumentj",
@@ -2863,11 +3086,15 @@
           "provided_by": "build/cheriot/cheriot/release/debug.library"
         },
         {
-          "compartment_name": "sched",
-          "export_symbol": "__export_sched__Z12thread_sleepP7Timeout",
-          "function": "thread_sleep(Timeout*)",
-          "kind": "CompartmentExport",
-          "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
+          "export_symbol": "__library_export_libcalls__Z13thread_id_getv",
+          "function": "thread_id_get()",
+          "kind": "LibraryFunction",
+          "provided_by": "build/.objs/cheriot.switcher/cheriot/cheriot/release/__/sdk/core/switcher/entry.S.o"
+        },
+        {
+          "export_symbol": "__library_export_libcalls___atomic_load_4",
+          "kind": "LibraryFunction",
+          "provided_by": "build/cheriot/cheriot/release/atomic4.library"
         },
         {
           "export_symbol": "__library_export_libcalls__Z32flaglock_upgrade_for_destructionP13FlagLockState",
@@ -2876,9 +3103,11 @@
           "provided_by": "build/cheriot/cheriot/release/locks.library"
         },
         {
-          "export_symbol": "__library_export_libcalls___atomic_load_4",
-          "kind": "LibraryFunction",
-          "provided_by": "build/cheriot/cheriot/release/atomic4.library"
+          "compartment_name": "sched",
+          "export_symbol": "__export_sched__Z12thread_sleepP7Timeoutj",
+          "function": "thread_sleep(Timeout*, unsigned int)",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
         },
         {
           "export_symbol": "__library_export_libcalls___cxa_guard_release",
@@ -2905,7 +3134,7 @@
         ],
         "name": ".message_queue_code",
         "output": {
-          "sha256": "498df9da872018c5a78ce80559f5df838fddcb787d9dd7b103f91c99d7984fd7"
+          "sha256": "f4f7729dc8c8994ff46220464a0c2dbe17805859e4ea8c116e08a2a42776285d"
         }
       },
       "exports": [
@@ -3107,13 +3336,13 @@
           {
             "file": "build/cheriot/cheriot/release/message_queue_library.library",
             "section_name": ".text",
-            "sha256": "92901922a2579a88c835d8898711e81a3dacf57efc89338db72d6825fcae2ea6",
-            "size": 1618
+            "sha256": "f13d80182ec800afa090867373ecb73e21ccc829ede9ab87371d27fdc6404a8c",
+            "size": 1792
           }
         ],
         "name": ".message_queue_library_code",
         "output": {
-          "sha256": "45d32d80d3c9ac0b54323ee09b4ec425fa8d92730dab786ade8bbdac3a7e4713"
+          "sha256": "2c6eb229c031f697a2122c578a2dc2152d101aa8c926c02e0c027613e4063760"
         }
       },
       "exports": [
@@ -3123,7 +3352,7 @@
           "interrupt_status": "inherit",
           "kind": "Function",
           "register_arguments": 2,
-          "start_offset": 80
+          "start_offset": 104
         },
         {
           "export_symbol": "__library_export_libcalls__Z22queue_make_send_handle11QueueHandle",
@@ -3131,7 +3360,15 @@
           "interrupt_status": "inherit",
           "kind": "Function",
           "register_arguments": 2,
-          "start_offset": 120
+          "start_offset": 144
+        },
+        {
+          "export_symbol": "__library_export_libcalls__Z13queue_destroyP10SObjStructP11QueueHandle",
+          "exported": true,
+          "interrupt_status": "inherit",
+          "kind": "Function",
+          "register_arguments": 2,
+          "start_offset": 184
         },
         {
           "export_symbol": "__library_export_libcalls__Z12queue_createP7TimeoutP10SObjStructP11QueueHandlePPvjj",
@@ -3139,7 +3376,7 @@
           "interrupt_status": "inherit",
           "kind": "Function",
           "register_arguments": 6,
-          "start_offset": 160
+          "start_offset": 360
         },
         {
           "export_symbol": "__library_export_libcalls__Z10queue_sendP7TimeoutP11QueueHandlePKv",
@@ -3147,7 +3384,7 @@
           "interrupt_status": "inherit",
           "kind": "Function",
           "register_arguments": 3,
-          "start_offset": 320
+          "start_offset": 510
         },
         {
           "export_symbol": "__library_export_libcalls__Z13queue_receiveP7TimeoutP11QueueHandlePv",
@@ -3155,7 +3392,7 @@
           "interrupt_status": "inherit",
           "kind": "Function",
           "register_arguments": 3,
-          "start_offset": 1118
+          "start_offset": 1316
         },
         {
           "export_symbol": "__library_export_libcalls__Z21queue_items_remainingP11QueueHandlePj",
@@ -3163,7 +3400,7 @@
           "interrupt_status": "inherit",
           "kind": "Function",
           "register_arguments": 2,
-          "start_offset": 1500
+          "start_offset": 1698
         },
         {
           "export_symbol": "__library_export_libcalls__Z27multiwaiter_queue_send_initP17EventWaiterSourceP11QueueHandle",
@@ -3171,7 +3408,7 @@
           "interrupt_status": "inherit",
           "kind": "Function",
           "register_arguments": 2,
-          "start_offset": 1562
+          "start_offset": 1760
         },
         {
           "export_symbol": "__library_export_libcalls__Z30multiwaiter_queue_receive_initP17EventWaiterSourceP11QueueHandle",
@@ -3179,7 +3416,7 @@
           "interrupt_status": "inherit",
           "kind": "Function",
           "register_arguments": 2,
-          "start_offset": 1638
+          "start_offset": 1836
         }
       ],
       "imports": [
@@ -3187,6 +3424,32 @@
           "export_symbol": "__library_export_libcalls___atomic_exchange_4",
           "kind": "LibraryFunction",
           "provided_by": "build/cheriot/cheriot/release/atomic4.library"
+        },
+        {
+          "compartment_name": "alloc",
+          "export_symbol": "__export_alloc__Z9heap_freeP10SObjStructPv",
+          "function": "heap_free(SObjStruct*, void*)",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/cheriot.allocator.compartment"
+        },
+        {
+          "export_symbol": "__library_export_libcalls___atomic_fetch_or_4",
+          "kind": "LibraryFunction",
+          "provided_by": "build/cheriot/cheriot/release/atomic4.library"
+        },
+        {
+          "compartment_name": "sched",
+          "export_symbol": "__export_sched__Z16futex_timed_waitP7TimeoutPKjjj",
+          "function": "futex_timed_wait(Timeout*, unsigned int const*, unsigned int, unsigned int)",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
+        },
+        {
+          "compartment_name": "alloc",
+          "export_symbol": "__export_alloc__Z13heap_allocateP7TimeoutP10SObjStructjj",
+          "function": "heap_allocate(Timeout*, SObjStruct*, unsigned int, unsigned int)",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/cheriot.allocator.compartment"
         },
         {
           "export_symbol": "__library_export_libcalls__Z13check_pointerPKvjjb",
@@ -3207,20 +3470,6 @@
           "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
         },
         {
-          "compartment_name": "alloc",
-          "export_symbol": "__export_alloc__Z13heap_allocateP7TimeoutP10SObjStructj",
-          "function": "heap_allocate(Timeout*, SObjStruct*, unsigned int)",
-          "kind": "CompartmentExport",
-          "provided_by": "build/cheriot/cheriot/release/cheriot.allocator.compartment"
-        },
-        {
-          "compartment_name": "sched",
-          "export_symbol": "__export_sched__Z16futex_timed_waitP7TimeoutPKjj14FutexWaitFlags",
-          "function": "futex_timed_wait(Timeout*, unsigned int const*, unsigned int, FutexWaitFlags)",
-          "kind": "CompartmentExport",
-          "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
-        },
-        {
           "export_symbol": "__library_export_libcalls__Z15heap_claim_fastP7TimeoutPKvS2_",
           "function": "heap_claim_fast(Timeout*, void const*, void const*)",
           "kind": "LibraryFunction",
@@ -3230,6 +3479,117 @@
           "export_symbol": "__library_export_libcalls___atomic_load_4",
           "kind": "LibraryFunction",
           "provided_by": "build/cheriot/cheriot/release/atomic4.library"
+        },
+        {
+          "compartment_name": "alloc",
+          "export_symbol": "__export_alloc__Z13heap_can_freeP10SObjStructPv",
+          "function": "heap_can_free(SObjStruct*, void*)",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/cheriot.allocator.compartment"
+        },
+        {
+          "export_symbol": "__library_export_libcalls__Z6memcpyPvPKvj",
+          "function": "memcpy(void*, void const*, unsigned int)",
+          "kind": "LibraryFunction",
+          "provided_by": "build/cheriot/cheriot/release/freestanding.library"
+        }
+      ]
+    },
+    "misc_test": {
+      "code": {
+        "inputs": [
+          {
+            "file": "build/cheriot/cheriot/release/misc_test.compartment",
+            "section_name": ".text",
+            "sha256": "e3379de8299e1dc537d7a2359e5fd8bfb23b32e8f9d8062f050c2b8a49fd1a77",
+            "size": 1474
+          },
+          {
+            "file": "build/cheriot/cheriot/release/misc_test.compartment",
+            "section_name": ".init_array",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "size": 0
+          },
+          {
+            "file": "build/cheriot/cheriot/release/misc_test.compartment",
+            "section_name": ".rodata",
+            "sha256": "dff7215515b603d97e7a5c7b6f0f21790eef4e41cda59fc8ebd9f42f74ab560c",
+            "size": 516
+          }
+        ],
+        "name": ".misc_test_code",
+        "output": {
+          "sha256": "f171900450134ba22f308458a2e23bfe17b903b26fec1e680abaa51890b0c371"
+        }
+      },
+      "exports": [
+        {
+          "export_symbol": "__export_misc_test__Z9test_miscv",
+          "exported": true,
+          "interrupt_status": "enabled",
+          "kind": "Function",
+          "register_arguments": 0,
+          "start_offset": 890
+        }
+      ],
+      "imports": [
+        {
+          "kind": "SharedObject",
+          "length": 1024,
+          "permits_load": true,
+          "permits_load_mutable": true,
+          "permits_load_store_capabilities": true,
+          "permits_store": true,
+          "shared_object": "exampleK",
+          "start": 2147604664
+        },
+        {
+          "kind": "SharedObject",
+          "length": 1024,
+          "permits_load": true,
+          "permits_load_mutable": false,
+          "permits_load_store_capabilities": false,
+          "permits_store": true,
+          "shared_object": "exampleK",
+          "start": 2147604664
+        },
+        {
+          "kind": "SharedObject",
+          "length": 4,
+          "permits_load": true,
+          "permits_load_mutable": false,
+          "permits_load_store_capabilities": true,
+          "permits_store": false,
+          "shared_object": "test_word",
+          "start": 2147605688
+        },
+        {
+          "kind": "SharedObject",
+          "length": 4,
+          "permits_load": true,
+          "permits_load_mutable": false,
+          "permits_load_store_capabilities": false,
+          "permits_store": false,
+          "shared_object": "test_word",
+          "start": 2147605688
+        },
+        {
+          "export_symbol": "__library_export_libcalls__Z6memchrPKvij",
+          "function": "memchr(void const*, int, unsigned int)",
+          "kind": "LibraryFunction",
+          "provided_by": "build/cheriot/cheriot/release/string.library"
+        },
+        {
+          "export_symbol": "__library_export_libcalls__Z20debug_report_failurePKcS0_S0_iS0_P19DebugFormatArgumentj",
+          "function": "debug_report_failure(char const*, char const*, char const*, int, char const*, DebugFormatArgument*, unsigned int)",
+          "kind": "LibraryFunction",
+          "provided_by": "build/cheriot/cheriot/release/debug.library"
+        },
+        {
+          "export_symbol": "__library_export_libcalls__Z23debug_log_message_writePKcS0_P19DebugFormatArgumentj",
+          "function": "debug_log_message_write(char const*, char const*, DebugFormatArgument*, unsigned int)",
+          "kind": "LibraryFunction",
+          "provided_by": "build/cheriot/cheriot/release/debug.library"
         },
         {
           "export_symbol": "__library_export_libcalls__Z6memcpyPvPKvj",
@@ -3263,7 +3623,7 @@
         ],
         "name": ".mmio_test_code",
         "output": {
-          "sha256": "bc7eb6f2c43ea20ee79eab416dbebc013964e5b4b4ebcb120267a951ffd67452"
+          "sha256": "8b5de01fee205a09469e88fd8b33ab039b9c61741627ee9d027b86eb87d92f4e"
         }
       },
       "exports": [
@@ -3441,8 +3801,8 @@
           {
             "file": "build/cheriot/cheriot/release/multiwaiter_test.compartment",
             "section_name": ".text",
-            "sha256": "a04bff8b3e7c3b5141b7cc386fe3af7caf816c83d787f256c0734727631e9b43",
-            "size": 3252
+            "sha256": "ad64c589ce4b70c3a8f6d9e4f7e26c0ff538e5265d59b2b11eecd3ecb0c276d6",
+            "size": 3254
           },
           {
             "file": "build/cheriot/cheriot/release/multiwaiter_test.compartment",
@@ -3459,7 +3819,7 @@
         ],
         "name": ".multiwaiter_test_code",
         "output": {
-          "sha256": "8c88ea4b7d809215d25ec112145a9492fb63ae0e90c96ac45ee83acc944146e4"
+          "sha256": "e953099df9f6c1e56eb580148f7af210f4813c8f0c0955fe9f1a1badff225266"
         }
       },
       "exports": [
@@ -3485,7 +3845,7 @@
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 1,
-          "start_offset": 2938
+          "start_offset": 2940
         },
         {
           "export_symbol": "__export_multiwaiter_test__ZN11thread_pool6detail20wrap_callback_lambdaIZ16test_multiwaitervE3$_2EEvPv",
@@ -3493,7 +3853,7 @@
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 1,
-          "start_offset": 3274
+          "start_offset": 3276
         }
       ],
       "imports": [
@@ -3637,15 +3997,15 @@
         },
         {
           "compartment_name": "sched",
-          "export_symbol": "__export_sched__Z12thread_sleepP7Timeout",
-          "function": "thread_sleep(Timeout*)",
+          "export_symbol": "__export_sched__Z18multiwaiter_deleteP10SObjStructP11MultiWaiter",
+          "function": "multiwaiter_delete(SObjStruct*, MultiWaiter*)",
           "kind": "CompartmentExport",
           "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
         },
         {
           "compartment_name": "sched",
-          "export_symbol": "__export_sched__Z18multiwaiter_deleteP10SObjStructP11MultiWaiter",
-          "function": "multiwaiter_delete(SObjStruct*, MultiWaiter*)",
+          "export_symbol": "__export_sched__Z12thread_sleepP7Timeoutj",
+          "function": "thread_sleep(Timeout*, unsigned int)",
           "kind": "CompartmentExport",
           "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
         },
@@ -3669,8 +4029,8 @@
           {
             "file": "build/cheriot/cheriot/release/queue_test.compartment",
             "section_name": ".text",
-            "sha256": "703a27c5ee13b93246c4e9f2a34c7163efe13a0053bc2015773de8fbaed8676d",
-            "size": 3410
+            "sha256": "0262b7169b0d1f33c264824298ac3d694a38688061dd3f26d5b28f5b9b9b4a85",
+            "size": 3736
           },
           {
             "file": "build/cheriot/cheriot/release/queue_test.compartment",
@@ -3681,13 +4041,13 @@
           {
             "file": "build/cheriot/cheriot/release/queue_test.compartment",
             "section_name": ".rodata",
-            "sha256": "db325b5a645114b3f02ab0933031a9e5808bd5e948fbf8b600c999e1094116aa",
-            "size": 1555
+            "sha256": "431ab47db262f21f25ecdd46efd8fe274301bd2b37ba4bbbcb8beee224c57373",
+            "size": 1715
           }
         ],
         "name": ".queue_test_code",
         "output": {
-          "sha256": "181e3f28c2c3d145cf54cc3cc8a95eb6ee3d838020e9048911feb09e4cd7c5eb"
+          "sha256": "fcbf1251c873257110c2649b5022d8577b1e15c85e887fe3ff2d7a246c8d208e"
         }
       },
       "exports": [
@@ -3697,7 +4057,7 @@
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 0,
-          "start_offset": 2968
+          "start_offset": 3260
         }
       ],
       "imports": [
@@ -3764,6 +4124,13 @@
           "provided_by": "build/cheriot/cheriot/release/message_queue.compartment"
         },
         {
+          "compartment_name": "alloc",
+          "export_symbol": "__export_alloc__Z13heap_allocateP7TimeoutP10SObjStructjj",
+          "function": "heap_allocate(Timeout*, SObjStruct*, unsigned int, unsigned int)",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/cheriot.allocator.compartment"
+        },
+        {
           "compartment_name": "message_queue",
           "export_symbol": "__export_message_queue__Z17queue_send_sealedP7TimeoutP10SObjStructPKv",
           "function": "queue_send_sealed(Timeout*, SObjStruct*, void const*)",
@@ -3807,6 +4174,12 @@
           "function": "heap_quota_remaining(SObjStruct*)",
           "kind": "CompartmentExport",
           "provided_by": "build/cheriot/cheriot/release/cheriot.allocator.compartment"
+        },
+        {
+          "export_symbol": "__library_export_libcalls__Z13queue_destroyP10SObjStructP11QueueHandle",
+          "function": "queue_destroy(SObjStruct*, QueueHandle*)",
+          "kind": "LibraryFunction",
+          "provided_by": "build/cheriot/cheriot/release/message_queue_library.library"
         }
       ]
     },
@@ -3816,13 +4189,13 @@
           {
             "file": "build/cheriot/cheriot/release/test-suite.scheduler.compartment",
             "section_name": ".text",
-            "sha256": "0a221cdbd4638181513dc8712abbb4e238343531e00347434d3dfb9d11582e81",
-            "size": 3726
+            "sha256": "db22161db71901522b279ded5c21d03a9c434ba60d7a83828498b90cfc7293ab",
+            "size": 4106
           }
         ],
         "name": "scheduler_code",
         "output": {
-          "sha256": "ac7f82ee99adaf04b175f4e81e774006ebc78f57beb5e0cd46bcb92aefdc30b8"
+          "sha256": "6d0a3496d5a3006b0ad16dfc410b464a41e6a2bc440e3216db4da0de179d269d"
         }
       },
       "exports": [
@@ -3837,7 +4210,7 @@
           "interrupt_status": "disabled",
           "kind": "Function",
           "register_arguments": 1,
-          "start_offset": 128
+          "start_offset": 136
         },
         {
           "export_symbol": "__export_sched__ZN5sched15scheduler_entryEPK16ThreadLoaderInfo",
@@ -3845,7 +4218,7 @@
           "interrupt_status": "disabled",
           "kind": "Function",
           "register_arguments": 1,
-          "start_offset": 170
+          "start_offset": 178
         },
         {
           "export_symbol": "__export_sched__ZN5sched15exception_entryEP19TrustedStackGenericILj0EEjjj",
@@ -3853,7 +4226,7 @@
           "interrupt_status": "disabled",
           "kind": "Function",
           "register_arguments": 4,
-          "start_offset": 534
+          "start_offset": 604
         },
         {
           "export_symbol": "__export_sched__Z21thread_systemtick_getv",
@@ -3861,23 +4234,23 @@
           "interrupt_status": "disabled",
           "kind": "Function",
           "register_arguments": 0,
-          "start_offset": 934
+          "start_offset": 1268
         },
         {
-          "export_symbol": "__export_sched__Z12thread_sleepP7Timeout",
+          "export_symbol": "__export_sched__Z12thread_sleepP7Timeoutj",
           "exported": true,
           "interrupt_status": "disabled",
           "kind": "Function",
-          "register_arguments": 1,
-          "start_offset": 944
+          "register_arguments": 2,
+          "start_offset": 1278
         },
         {
-          "export_symbol": "__export_sched__Z16futex_timed_waitP7TimeoutPKjj14FutexWaitFlags",
+          "export_symbol": "__export_sched__Z16futex_timed_waitP7TimeoutPKjjj",
           "exported": true,
           "interrupt_status": "disabled",
           "kind": "Function",
           "register_arguments": 4,
-          "start_offset": 1234
+          "start_offset": 1618
         },
         {
           "export_symbol": "__export_sched__Z10futex_wakePjj",
@@ -3885,7 +4258,7 @@
           "interrupt_status": "disabled",
           "kind": "Function",
           "register_arguments": 2,
-          "start_offset": 1838
+          "start_offset": 2226
         },
         {
           "export_symbol": "__export_sched__Z18multiwaiter_createP7TimeoutP10SObjStructPP11MultiWaiterj",
@@ -3893,7 +4266,7 @@
           "interrupt_status": "disabled",
           "kind": "Function",
           "register_arguments": 4,
-          "start_offset": 2286
+          "start_offset": 2676
         },
         {
           "export_symbol": "__export_sched__Z18multiwaiter_deleteP10SObjStructP11MultiWaiter",
@@ -3901,7 +4274,7 @@
           "interrupt_status": "disabled",
           "kind": "Function",
           "register_arguments": 2,
-          "start_offset": 2448
+          "start_offset": 2856
         },
         {
           "export_symbol": "__export_sched__Z16multiwaiter_waitP7TimeoutP11MultiWaiterP17EventWaiterSourcej",
@@ -3909,7 +4282,7 @@
           "interrupt_status": "disabled",
           "kind": "Function",
           "register_arguments": 4,
-          "start_offset": 2586
+          "start_offset": 2994
         },
         {
           "export_symbol": "__export_sched__Z19interrupt_futex_getP10SObjStruct",
@@ -3917,7 +4290,7 @@
           "interrupt_status": "disabled",
           "kind": "Function",
           "register_arguments": 1,
-          "start_offset": 3002
+          "start_offset": 3412
         },
         {
           "export_symbol": "__export_sched__Z18interrupt_completeP10SObjStruct",
@@ -3925,7 +4298,7 @@
           "interrupt_status": "disabled",
           "kind": "Function",
           "register_arguments": 1,
-          "start_offset": 3152
+          "start_offset": 3562
         },
         {
           "export_symbol": "__export_sched__Z12thread_countv",
@@ -3933,7 +4306,7 @@
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 0,
-          "start_offset": 3182
+          "start_offset": 3592
         },
         {
           "export_symbol": "__export_sched__Z26thread_elapsed_cycles_idlev",
@@ -3941,7 +4314,7 @@
           "interrupt_status": "disabled",
           "kind": "Function",
           "register_arguments": 0,
-          "start_offset": 3188
+          "start_offset": 3598
         },
         {
           "export_symbol": "__export_sched__Z29thread_elapsed_cycles_currentv",
@@ -3949,7 +4322,7 @@
           "interrupt_status": "disabled",
           "kind": "Function",
           "register_arguments": 0,
-          "start_offset": 3194
+          "start_offset": 3604
         }
       ],
       "imports": [
@@ -3975,6 +4348,11 @@
           "export_symbol": "__export.sealing_type.sched.InterruptKey",
           "kind": "CompartmentExport",
           "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
+        },
+        {
+          "export_symbol": "__library_export_libcalls___udivdi3",
+          "kind": "LibraryFunction",
+          "provided_by": "build/cheriot/cheriot/release/crt.library"
         },
         {
           "export_symbol": "__library_export_libcalls__Z15flaglock_unlockP13FlagLockState",
@@ -4014,6 +4392,13 @@
           "provided_by": "build/cheriot/cheriot/release/cheriot.allocator.compartment"
         },
         {
+          "compartment_name": "alloc",
+          "export_symbol": "__export_alloc__Z13heap_allocateP7TimeoutP10SObjStructjj",
+          "function": "heap_allocate(Timeout*, SObjStruct*, unsigned int, unsigned int)",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/cheriot.allocator.compartment"
+        },
+        {
           "export_symbol": "__library_export_libcalls__Z16flaglock_trylockP7TimeoutP13FlagLockState",
           "function": "flaglock_trylock(Timeout*, FlagLockState*)",
           "kind": "LibraryFunction",
@@ -4024,13 +4409,6 @@
           "function": "check_pointer(void const*, unsigned int, unsigned int, bool)",
           "kind": "LibraryFunction",
           "provided_by": "build/cheriot/cheriot/release/compartment_helpers.library"
-        },
-        {
-          "compartment_name": "alloc",
-          "export_symbol": "__export_alloc__Z13heap_allocateP7TimeoutP10SObjStructj",
-          "function": "heap_allocate(Timeout*, SObjStruct*, unsigned int)",
-          "kind": "CompartmentExport",
-          "provided_by": "build/cheriot/cheriot/release/cheriot.allocator.compartment"
         },
         {
           "compartment_name": "alloc",
@@ -4081,8 +4459,8 @@
           {
             "file": "build/cheriot/cheriot/release/stack_integrity_thread.compartment",
             "section_name": ".text",
-            "sha256": "85a2d4f07b891617fe6dbd7f14a0d65e62ba569347fb223982654877cc09c158",
-            "size": 688
+            "sha256": "8f5494e8dfc5bf3e7fb5b2d0b026ee21e7d5972cd8ede498f9cf679148317b6f",
+            "size": 694
           },
           {
             "file": "build/cheriot/cheriot/release/stack_integrity_thread.compartment",
@@ -4099,7 +4477,7 @@
         ],
         "name": ".stack_integrity_thread_code",
         "output": {
-          "sha256": "c3a006fd8de6ca880a626fe1839e5e3b1f3d2e51b5b3f9b4cb15d09e4a5612ce"
+          "sha256": "07421e9a3f273a2cd8c88c40da5d486360e7a1e1c32834ab600a55c5f63f8a80"
         }
       },
       "exports": [
@@ -4158,6 +4536,14 @@
           "kind": "Function",
           "register_arguments": 1,
           "start_offset": 630
+        },
+        {
+          "export_symbol": "__export_stack_integrity_thread__Z22test_stack_requirementv",
+          "exported": true,
+          "interrupt_status": "enabled",
+          "kind": "Function",
+          "register_arguments": 0,
+          "start_offset": 658
         }
       ],
       "imports": [
@@ -4181,8 +4567,8 @@
           {
             "file": "build/cheriot/cheriot/release/stack_test.compartment",
             "section_name": ".text",
-            "sha256": "5c5adee3f8d9653b6dee0092a3124cbf889456bdb1e5d56b771b9b17c62fe87a",
-            "size": 1106
+            "sha256": "3d350cf9baaab83c3a6e3280aaddcbf4f65a4cecf6223f2e6f9e3a15f7645dc3",
+            "size": 1414
           },
           {
             "file": "build/cheriot/cheriot/release/stack_test.compartment",
@@ -4193,13 +4579,13 @@
           {
             "file": "build/cheriot/cheriot/release/stack_test.compartment",
             "section_name": ".rodata",
-            "sha256": "cc4374709740aa46cb769fc61b78cf4085dd1fbb676f03acd61525aba2407b22",
-            "size": 531
+            "sha256": "08bc1f55f5872b888657bca7dd2e9ffcc08eb962b2810bd504cf017e8edc49c4",
+            "size": 731
           }
         ],
         "name": ".stack_test_code",
         "output": {
-          "sha256": "734b096a260d34af1becbeef1cfddf0740ac07af11a918a1e6aa1e7676d27c95"
+          "sha256": "33c712defe4eda885aee0747078d6d92f640aafc28c7226366ed129b74d6d82b"
         }
       },
       "exports": [
@@ -4209,7 +4595,7 @@
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 0,
-          "start_offset": 268
+          "start_offset": 316
         },
         {
           "export_symbol": "__export_stack_test__Z22cross_compartment_callv",
@@ -4217,7 +4603,7 @@
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 0,
-          "start_offset": 316
+          "start_offset": 364
         },
         {
           "export_symbol": "__export_stack_test__Z10test_stackv",
@@ -4225,7 +4611,7 @@
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 0,
-          "start_offset": 364
+          "start_offset": 440
         }
       ],
       "imports": [
@@ -4247,6 +4633,13 @@
           "compartment_name": "stack_integrity_thread",
           "export_symbol": "__export_stack_integrity_thread__Z26test_stack_invalid_on_callPU10chericcallFvvE",
           "function": "test_stack_invalid_on_call(void () chericcall*)",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/stack_integrity_thread.compartment"
+        },
+        {
+          "compartment_name": "stack_integrity_thread",
+          "export_symbol": "__export_stack_integrity_thread__Z22test_stack_requirementv",
+          "function": "test_stack_requirement()",
           "kind": "CompartmentExport",
           "provided_by": "build/cheriot/cheriot/release/stack_integrity_thread.compartment"
         },
@@ -4330,7 +4723,7 @@
         ],
         "name": ".static_sealing_inner_code",
         "output": {
-          "sha256": "b758a880fd2245a9559465e2b906fbc3ce613ccd4ccc46f6ce73259178106476"
+          "sha256": "59f403a046a5af09a3a1b362e3176a7c300ef57c6bd36a799f6970504c73b7b0"
         }
       },
       "exports": [
@@ -4398,7 +4791,7 @@
         ],
         "name": ".static_sealing_test_code",
         "output": {
-          "sha256": "64974e4063ef26d1e8406a2d7b4982e9a426444afaacc18c8dd81663a8157376"
+          "sha256": "50ec4a400f4884580bf26bd41becee83a2782ab1bbfc9078e322251cabb5d52a"
         }
       },
       "exports": [
@@ -4431,19 +4824,154 @@
         }
       ]
     },
+    "stdio": {
+      "code": {
+        "inputs": [
+          {
+            "file": "build/cheriot/cheriot/release/stdio.library",
+            "section_name": ".text",
+            "sha256": "5933efd91a1e7f1c5650e576faba6080cab17882645591c0597753df3f4fcd36",
+            "size": 2536
+          },
+          {
+            "file": "build/cheriot/cheriot/release/stdio.library",
+            "section_name": ".rodata",
+            "sha256": "fb8db0f058c60262d796f0165b1fe54a0580ca8d025baa13daff4063a27a4ad7",
+            "size": 56
+          }
+        ],
+        "name": ".stdio_code",
+        "output": {
+          "sha256": "2d01b2704c7e63443c4d6dbc648e259176e78f55798c3f77e733d480933c5452"
+        }
+      },
+      "exports": [
+        {
+          "export_symbol": "__library_export_libcalls__Z9vsnprintfPcjPKcPv",
+          "exported": true,
+          "interrupt_status": "inherit",
+          "kind": "Function",
+          "register_arguments": 4,
+          "start_offset": 16
+        },
+        {
+          "export_symbol": "__library_export_libcalls__Z8vfprintfPVvPKcPv",
+          "exported": true,
+          "interrupt_status": "disabled",
+          "kind": "Function",
+          "register_arguments": 3,
+          "start_offset": 2304
+        },
+        {
+          "export_symbol": "__library_export_libcalls__Z8snprintfPcjPKcz",
+          "exported": true,
+          "interrupt_status": "inherit",
+          "kind": "Function",
+          "register_arguments": 3,
+          "start_offset": 2362
+        }
+      ],
+      "imports": [
+        {
+          "export_symbol": "__library_export_libcalls__Z6strlenPKc",
+          "function": "strlen(char const*)",
+          "kind": "LibraryFunction",
+          "provided_by": "build/cheriot/cheriot/release/string.library"
+        }
+      ]
+    },
+    "stdio_test": {
+      "code": {
+        "inputs": [
+          {
+            "file": "build/cheriot/cheriot/release/stdio_test.compartment",
+            "section_name": ".text",
+            "sha256": "7a2bf6c86a1ce10a6f5b6e957e4e187a80f39d91da1493e082e61d2138e1b466",
+            "size": 540
+          },
+          {
+            "file": "build/cheriot/cheriot/release/stdio_test.compartment",
+            "section_name": ".init_array",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "size": 0
+          },
+          {
+            "file": "build/cheriot/cheriot/release/stdio_test.compartment",
+            "section_name": ".rodata",
+            "sha256": "f7cec0145b4b56a1bf23e33f12bac9c974fa94c15ed9918af30a90757ebf1e29",
+            "size": 203
+          }
+        ],
+        "name": ".stdio_test_code",
+        "output": {
+          "sha256": "c89ae9f37d564e6c331a9ad8c55e8e6d7e7a16fa5311afe3fb5bf072c3bf8a99"
+        }
+      },
+      "exports": [
+        {
+          "export_symbol": "__export_stdio_test__Z10test_stdiov",
+          "exported": true,
+          "interrupt_status": "enabled",
+          "kind": "Function",
+          "register_arguments": 0,
+          "start_offset": 56
+        }
+      ],
+      "imports": [
+        {
+          "kind": "MMIO",
+          "length": 256,
+          "permits_load": true,
+          "permits_load_mutable": false,
+          "permits_load_store_capabilities": false,
+          "permits_store": true,
+          "start": 268435456
+        },
+        {
+          "export_symbol": "__library_export_libcalls__Z6strcmpPKcS0_",
+          "function": "strcmp(char const*, char const*)",
+          "kind": "LibraryFunction",
+          "provided_by": "build/cheriot/cheriot/release/string.library"
+        },
+        {
+          "export_symbol": "__library_export_libcalls__Z8snprintfPcjPKcz",
+          "function": "snprintf(char*, unsigned int, char const*, ...)",
+          "kind": "LibraryFunction",
+          "provided_by": "build/cheriot/cheriot/release/stdio.library"
+        },
+        {
+          "export_symbol": "__library_export_libcalls__Z8vfprintfPVvPKcPv",
+          "function": "vfprintf(void volatile*, char const*, void*)",
+          "kind": "LibraryFunction",
+          "provided_by": "build/cheriot/cheriot/release/stdio.library"
+        },
+        {
+          "export_symbol": "__library_export_libcalls__Z20debug_report_failurePKcS0_S0_iS0_P19DebugFormatArgumentj",
+          "function": "debug_report_failure(char const*, char const*, char const*, int, char const*, DebugFormatArgument*, unsigned int)",
+          "kind": "LibraryFunction",
+          "provided_by": "build/cheriot/cheriot/release/debug.library"
+        },
+        {
+          "export_symbol": "__library_export_libcalls__Z23debug_log_message_writePKcS0_P19DebugFormatArgumentj",
+          "function": "debug_log_message_write(char const*, char const*, DebugFormatArgument*, unsigned int)",
+          "kind": "LibraryFunction",
+          "provided_by": "build/cheriot/cheriot/release/debug.library"
+        }
+      ]
+    },
     "string": {
       "code": {
         "inputs": [
           {
             "file": "build/cheriot/cheriot/release/string.library",
             "section_name": ".text",
-            "sha256": "2260c22246277457466c2dd3287a092b480e8b49f51fe09a47b115f845844b0d",
-            "size": 342
+            "sha256": "1e3b7aa3da97bffad61177be2b8267a51899e798ec6213b105229c4729501a20",
+            "size": 370
           }
         ],
         "name": ".string_code",
         "output": {
-          "sha256": "974f6fd8e064bacfdb6ac162770ebe2db84d3414c5be65f9d2bc6db0b6ad31be"
+          "sha256": "64ae8340c0490904151948ef5458d253bbda37a2dfe5c1820fa92e47c2bc4d9a"
         }
       },
       "exports": [
@@ -4502,6 +5030,14 @@
           "kind": "Function",
           "register_arguments": 3,
           "start_offset": 300
+        },
+        {
+          "export_symbol": "__library_export_libcalls__Z6memchrPKvij",
+          "exported": true,
+          "interrupt_status": "inherit",
+          "kind": "Function",
+          "register_arguments": 3,
+          "start_offset": 366
         }
       ],
       "imports": [
@@ -4525,8 +5061,8 @@
           {
             "file": "build/cheriot/cheriot/release/test_runner.compartment",
             "section_name": ".text",
-            "sha256": "4c06a4b77b21393cfe4d035a9d79a9d8ec4fb063d28950a8ba75ebf36d5cba4e",
-            "size": 2650
+            "sha256": "d4f35640f51b37a3c8cc2966738ae627db47836a2f2197e41058027806249d4e",
+            "size": 5018
           },
           {
             "file": "build/cheriot/cheriot/release/test_runner.compartment",
@@ -4537,13 +5073,13 @@
           {
             "file": "build/cheriot/cheriot/release/test_runner.compartment",
             "section_name": ".rodata",
-            "sha256": "4d0f58dd7c9c5a7ecc730651c270fccbfa3f1e3781f2e2ba728101cb564ba5fc",
-            "size": 1504
+            "sha256": "838cbf9932b09cdad56112395b404ae4145cbea520bf87319306c1ec99bf08aa",
+            "size": 2576
           }
         ],
         "name": ".test_runner_code",
         "output": {
-          "sha256": "c4017795d8271808571b33ae9a09ac2351c203d7386899c3ee6f3b8d5c9bcccd"
+          "sha256": "9d7caeb5a1d08c5b5215259b3de688755150f3601fca28703be51e10770335e1"
         }
       },
       "exports": [
@@ -4553,7 +5089,7 @@
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 0,
-          "start_offset": 300
+          "start_offset": 624
         },
         {
           "export_symbol": "__library_export_libcalls__GLOBAL__sub_I___cpp_global_constructors_test.cc.cc",
@@ -4561,16 +5097,61 @@
           "interrupt_status": "inherit",
           "kind": "Function",
           "register_arguments": 0,
-          "start_offset": 2808
+          "start_offset": 5240
         }
       ],
       "imports": [
+        {
+          "contents": "00100000 00000000 00000000 00000000 00000000 00000000",
+          "kind": "SealedObject",
+          "sealing_type": {
+            "compartment": "alloc",
+            "key": "MallocKey",
+            "provided_by": "build/cheriot/cheriot/release/cheriot.allocator.compartment",
+            "symbol": "__export.sealing_type.alloc.MallocKey"
+          }
+        },
+        {
+          "compartment_name": "allocator_test",
+          "export_symbol": "__export_allocator_test__Z14test_allocatorv",
+          "function": "test_allocator()",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/allocator_test.compartment"
+        },
+        {
+          "compartment_name": "stdio_test",
+          "export_symbol": "__export_stdio_test__Z10test_stdiov",
+          "function": "test_stdio()",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/stdio_test.compartment"
+        },
+        {
+          "compartment_name": "list_test",
+          "export_symbol": "__export_list_test__Z9test_listv",
+          "function": "test_list()",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/list_test.compartment"
+        },
         {
           "compartment_name": "mmio_test",
           "export_symbol": "__export_mmio_test__Z9test_mmiov",
           "function": "test_mmio()",
           "kind": "CompartmentExport",
           "provided_by": "build/cheriot/cheriot/release/mmio_test.compartment"
+        },
+        {
+          "compartment_name": "debug_test",
+          "export_symbol": "__export_debug_test__Z14test_debug_cxxv",
+          "function": "test_debug_cxx()",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/debug_test.compartment"
+        },
+        {
+          "compartment_name": "alloc",
+          "export_symbol": "__export_alloc__Z9heap_freeP10SObjStructPv",
+          "function": "heap_free(SObjStruct*, void*)",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/cheriot.allocator.compartment"
         },
         {
           "compartment_name": "crash_recovery_test",
@@ -4601,6 +5182,13 @@
           "provided_by": "build/cheriot/cheriot/release/stack_test.compartment"
         },
         {
+          "compartment_name": "debug_test",
+          "export_symbol": "__export_debug_test__Z12test_debug_cv",
+          "function": "test_debug_c()",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/debug_test.compartment"
+        },
+        {
           "compartment_name": "futex_test",
           "export_symbol": "__export_futex_test__Z10test_futexv",
           "function": "test_futex()",
@@ -4620,6 +5208,13 @@
           "function": "test_check_pointer()",
           "kind": "CompartmentExport",
           "provided_by": "build/cheriot/cheriot/release/check_pointer_test.compartment"
+        },
+        {
+          "compartment_name": "alloc",
+          "export_symbol": "__export_alloc__Z13heap_allocateP7TimeoutP10SObjStructjj",
+          "function": "heap_allocate(Timeout*, SObjStruct*, unsigned int, unsigned int)",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/cheriot.allocator.compartment"
         },
         {
           "compartment_name": "sched",
@@ -4648,11 +5243,11 @@
           "provided_by": "build/cheriot/cheriot/release/debug.library"
         },
         {
-          "compartment_name": "allocator_test",
-          "export_symbol": "__export_allocator_test__Z14test_allocatorv",
-          "function": "test_allocator()",
+          "compartment_name": "misc_test",
+          "export_symbol": "__export_misc_test__Z9test_miscv",
+          "function": "test_misc()",
           "kind": "CompartmentExport",
-          "provided_by": "build/cheriot/cheriot/release/allocator_test.compartment"
+          "provided_by": "build/cheriot/cheriot/release/misc_test.compartment"
         },
         {
           "compartment_name": "multiwaiter_test",
@@ -4716,7 +5311,7 @@
         ],
         "name": ".thread_pool_code",
         "output": {
-          "sha256": "b3941735a676dc75dbd4f05da96a07bedb37c464deba2a4d2b2d765726846d50"
+          "sha256": "e3f575d875febeeb24e1958bdef6227291460908b6a7561200be9fd143d89cd2"
         }
       },
       "exports": [
@@ -4751,6 +5346,13 @@
           "provided_by": "build/cheriot/cheriot/release/locks.library"
         },
         {
+          "compartment_name": "sched",
+          "export_symbol": "__export_sched__Z16futex_timed_waitP7TimeoutPKjjj",
+          "function": "futex_timed_wait(Timeout*, unsigned int const*, unsigned int, unsigned int)",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
+        },
+        {
           "export_symbol": "__library_export_libcalls__Z16flaglock_trylockP7TimeoutP13FlagLockState",
           "function": "flaglock_trylock(Timeout*, FlagLockState*)",
           "kind": "LibraryFunction",
@@ -4765,13 +5367,6 @@
           "compartment_name": "sched",
           "export_symbol": "__export_sched__Z10futex_wakePjj",
           "function": "futex_wake(unsigned int*, unsigned int)",
-          "kind": "CompartmentExport",
-          "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
-        },
-        {
-          "compartment_name": "sched",
-          "export_symbol": "__export_sched__Z16futex_timed_waitP7TimeoutPKjj14FutexWaitFlags",
-          "function": "futex_timed_wait(Timeout*, unsigned int const*, unsigned int, FutexWaitFlags)",
           "kind": "CompartmentExport",
           "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
         },
@@ -4794,8 +5389,8 @@
           {
             "file": "build/cheriot/cheriot/release/thread_pool_test.compartment",
             "section_name": ".text",
-            "sha256": "d50052aa9c6aee0df87c4c4617ece84853433161652e05cdba8f914961481639",
-            "size": 2920
+            "sha256": "c3b2c3e72e94c3b8634e6a047eda4e6939dd475e281f6e91c56813589ae22a8c",
+            "size": 2922
           },
           {
             "file": "build/cheriot/cheriot/release/thread_pool_test.compartment",
@@ -4812,7 +5407,7 @@
         ],
         "name": ".thread_pool_test_code",
         "output": {
-          "sha256": "059fed5c0a3d031cb2e33e95ce1847c8fa8b5d7fbe81b48c6a4ebbbce2b942ae"
+          "sha256": "6c0f51aead0fa87db57d02c2ba1c78f5c491ac0c8c21de12b63f1c3cc606ba8f"
         }
       },
       "exports": [
@@ -4830,7 +5425,7 @@
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 0,
-          "start_offset": 1990
+          "start_offset": 1992
         },
         {
           "export_symbol": "__library_export_thread_pool_test__ZN5CHERI24with_interrupts_disabledIZZ16test_thread_poolvENK3$_0clEvEUlvE_EEDaOT_",
@@ -4838,7 +5433,7 @@
           "interrupt_status": "disabled",
           "kind": "Function",
           "register_arguments": 0,
-          "start_offset": 2014
+          "start_offset": 2016
         },
         {
           "export_symbol": "__export_thread_pool_test__ZN11thread_pool6detail20wrap_callback_lambdaIZ16test_thread_poolvE3$_1EEvPv",
@@ -4846,7 +5441,7 @@
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 1,
-          "start_offset": 2146
+          "start_offset": 2148
         },
         {
           "export_symbol": "__library_export_thread_pool_test__ZN5CHERI24with_interrupts_disabledIZZ16test_thread_poolvENK3$_1clEvEUlvE_EEDaOT_",
@@ -4854,7 +5449,7 @@
           "interrupt_status": "disabled",
           "kind": "Function",
           "register_arguments": 1,
-          "start_offset": 2250
+          "start_offset": 2252
         },
         {
           "export_symbol": "__export_thread_pool_test__ZN11thread_pool6detail22wrap_callback_functionIZ16test_thread_poolvE3$_2EEvPv",
@@ -4862,7 +5457,7 @@
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 0,
-          "start_offset": 2428
+          "start_offset": 2430
         },
         {
           "export_symbol": "__export_thread_pool_test__ZN11thread_pool6detail20wrap_callback_lambdaIZ16test_thread_poolvE3$_3EEvPv",
@@ -4870,7 +5465,7 @@
           "interrupt_status": "enabled",
           "kind": "Function",
           "register_arguments": 1,
-          "start_offset": 2820
+          "start_offset": 2822
         }
       ],
       "imports": [
@@ -4973,6 +5568,13 @@
           "provided_by": "build/cheriot/cheriot/release/cheriot.allocator.compartment"
         },
         {
+          "compartment_name": "alloc",
+          "export_symbol": "__export_alloc__Z13heap_allocateP7TimeoutP10SObjStructjj",
+          "function": "heap_allocate(Timeout*, SObjStruct*, unsigned int, unsigned int)",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/cheriot.allocator.compartment"
+        },
+        {
           "export_symbol": "__library_export_libcalls__Z16token_obj_unsealP10SKeyStructP10SObjStruct",
           "function": "token_obj_unseal(SKeyStruct*, SObjStruct*)",
           "kind": "LibraryFunction",
@@ -4982,13 +5584,6 @@
           "compartment_name": "alloc",
           "export_symbol": "__export_alloc__Z27token_sealed_unsealed_allocP7TimeoutP10SObjStructP10SKeyStructjPPv",
           "function": "token_sealed_unsealed_alloc(Timeout*, SObjStruct*, SKeyStruct*, unsigned int, void**)",
-          "kind": "CompartmentExport",
-          "provided_by": "build/cheriot/cheriot/release/cheriot.allocator.compartment"
-        },
-        {
-          "compartment_name": "alloc",
-          "export_symbol": "__export_alloc__Z13heap_allocateP7TimeoutP10SObjStructj",
-          "function": "heap_allocate(Timeout*, SObjStruct*, unsigned int)",
           "kind": "CompartmentExport",
           "provided_by": "build/cheriot/cheriot/release/cheriot.allocator.compartment"
         },
@@ -5005,17 +5600,17 @@
           "provided_by": "build/cheriot/cheriot/release/debug.library"
         },
         {
-          "compartment_name": "sched",
-          "export_symbol": "__export_sched__Z12thread_sleepP7Timeout",
-          "function": "thread_sleep(Timeout*)",
-          "kind": "CompartmentExport",
-          "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
-        },
-        {
           "export_symbol": "__library_export_libcalls__Z13thread_id_getv",
           "function": "thread_id_get()",
           "kind": "LibraryFunction",
           "provided_by": "build/.objs/cheriot.switcher/cheriot/cheriot/release/__/sdk/core/switcher/entry.S.o"
+        },
+        {
+          "compartment_name": "sched",
+          "export_symbol": "__export_sched__Z12thread_sleepP7Timeoutj",
+          "function": "thread_sleep(Timeout*, unsigned int)",
+          "kind": "CompartmentExport",
+          "provided_by": "build/cheriot/cheriot/release/test-suite.scheduler.compartment"
         },
         {
           "export_symbol": "__library_export_libcalls___atomic_load_4",
@@ -5047,13 +5642,13 @@
           {
             "file": "build/cheriot/cheriot/release/cheriot.token_library.library",
             "section_name": ".text",
-            "sha256": "479144f5724234ff3377f16feebcf2093b15515730546b5276692e92fdf67491",
-            "size": 90
+            "sha256": "cc1369fd8e3102e7458c9c5e93954a108f8cc2bde4c6a84cf87b3adb0f084fd6",
+            "size": 98
           }
         ],
         "name": "token_library_code",
         "output": {
-          "sha256": "6586b8443dae726c9fee616bc574cfc904a4d03bffead50b360e51bfa7e5e49e"
+          "sha256": "2f00bf03e4fcbbe0fbc18cccfa075a14d02bcab7df760c0574af7a666f1b437d"
         }
       },
       "exports": [
@@ -5080,8 +5675,8 @@
         {
           "file": "build/.objs/cheriot.loader/cheriot/cheriot/release/__/sdk/core/loader/boot.cc.o",
           "section_name": ".text.loader_entry_point",
-          "sha256": "0eaecd91c2014d37a7d4ebebc8ec91fcbfdf461e432e1a7918deb8f0f7418d00",
-          "size": 10336
+          "sha256": "2195e0fd65d4c6a6c51bdc70e4e4cc8f3ac0b68e6a7e7ad3934f2eee016002c8",
+          "size": 10370
         },
         {
           "file": "build/.objs/cheriot.loader/cheriot/cheriot/release/__/sdk/core/loader/boot.cc.o",
@@ -5091,13 +5686,19 @@
         },
         {
           "file": "build/.objs/cheriot.loader/cheriot/cheriot/release/__/sdk/core/loader/boot.cc.o",
+          "section_name": ".text._ZZN12_GLOBAL__N_118find_export_targetIN6loader6ImgHdr21PrivilegedCompartmentEEEPvRKS2_RKT_RNS1_11ImportEntryEENKUlvE_clEv",
+          "sha256": "8059282fe413daa7266481c36dc58e66aad8693077211bab43af5a05688b7a45",
+          "size": 414
+        },
+        {
+          "file": "build/.objs/cheriot.loader/cheriot/cheriot/release/__/sdk/core/loader/boot.cc.o",
           "section_name": ".rodata..L__const._ZN12_GLOBAL__N_110seal_entryIvEEPT_N5CHERI10CapabilityIS1_EEN6loader15InterruptStatusE.Sentries",
           "sha256": "e712069a78edaf3b369c83fd75ee3688daff095c9f7b25d1ba45d51e374a601f",
           "size": 12
         }
       ],
       "output": {
-        "sha256": "6172d83d4ec3ac2416be06abaaf7a7295ca6f8f034f92df6b97a2c78f135ab20"
+        "sha256": "59d57aea2672ed255e55ea5a681fc178bcf644858f0d3ff144aa535cdd97b895"
       },
       "section_name": ".loader_code"
     },
@@ -5130,18 +5731,40 @@
         {
           "file": "build/.objs/cheriot.loader/cheriot/cheriot/release/__/sdk/core/loader/boot.S.o",
           "section_name": ".loader_start",
-          "sha256": "f265277f8629df37ec2cc1d65eac7ba5e60e3add2516c4493b029067499692ba",
-          "size": 372
+          "sha256": "33be607b7f61a250154eb920b98f0b581fc9e9d77e78a047516e132911459c47",
+          "size": 362
         }
       ],
       "output": {
-        "sha256": "309bcbdfec4205aa4b29e6ca8a2005325cecf6ab094f65c570ade7fd66897fa9"
+        "sha256": "fd41b36cdf827b611149597e2736481e2dc588dc350badcec6ba9ca2a53b88e1"
       },
       "section_name": ".loader_start"
     }
   },
   "file": "build/cheriot/cheriot/release/test-suite",
-  "final_hash": "1b7d7e85f44dc2b473ae42a8a76d470a84c3b242f159219edb99e1071d3abb89",
+  "final_hash": "28f19a269b220749db7370d7cfac09991eeb1e4666407fa895c4dc66ffafb2d2",
+  "sharedObjects": [
+    {
+      "end": 2147604612,
+      "name": "allocator_epoch",
+      "start": 2147604608
+    },
+    {
+      "end": 2147604664,
+      "name": "allocator_hazard_pointers",
+      "start": 2147604616
+    },
+    {
+      "end": 2147605688,
+      "name": "exampleK",
+      "start": 2147604664
+    },
+    {
+      "end": 2147605692,
+      "name": "test_word",
+      "start": 2147605688
+    }
+  ],
   "threads": [
     {
       "entry_point": {
@@ -5156,7 +5779,7 @@
       },
       "trusted_stack": {
         "length": 408,
-        "start": 2147484216
+        "start": 2147484208
       }
     },
     {
@@ -5172,7 +5795,7 @@
       },
       "trusted_stack": {
         "length": 384,
-        "start": 2147484624
+        "start": 2147484616
       }
     },
     {
@@ -5188,7 +5811,7 @@
       },
       "trusted_stack": {
         "length": 384,
-        "start": 2147485008
+        "start": 2147485000
       }
     }
   ]
