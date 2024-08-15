@@ -35,6 +35,17 @@ namespace
 			}
 		}
 
+		# Check that the allocator imports the hazard list with the correct permissions.
+		allocator_hazard_list_permissions_are_valid {
+			some hazardListImport
+			hazardListImport = [ i | i = input.compartments.allocator.imports[_] ; i.shared_object == "allocator_hazard_pointers"]
+			every i in hazardListImport {
+				i.permits_load == true
+				i.permits_load_store_capabilities == true
+				i.permits_load_mutable == false
+				i.permits_store == false
+			}
+		}
 
 		valid {
 			all_sealed_allocator_capabilities_are_valid
@@ -43,6 +54,22 @@ namespace
 			# Only the scheduler may access the interrupt controllers.
 			data.compartment.mmio_allow_list("clint", {"scheduler"})
 			data.compartment.mmio_allow_list("plic", {"scheduler"})
+			# Only the allocator may access the hazard list (the switcher can
+			# as well via another mechanism)
+			data.compartment.shared_object_allow_list("allocator_hazard_pointers", {"allocator"})
+			# Only the allocator may write to the epoch.
+			# Currently, only the compartment-helpers library reads the epoch,
+			# but it isn't a security problem if anything else does.
+			data.compartment.shared_object_writeable_allow_list("allocator_epoch", {"allocator"})
+			# Size of hazard list and allocator epoch.
+			some hazardList
+			hazardList = data.compartment.shared_object("allocator_hazard_pointers")
+			# Two hazard pointers per thread.
+			hazardList.end - hazardList.start = count(input.threads) * 2 * 8
+			some epoch
+			epoch = data.compartment.shared_object("allocator_epoch")
+			# 32-bit epoch
+			epoch.end - epoch.start = 4
 		}
 		)";
 }

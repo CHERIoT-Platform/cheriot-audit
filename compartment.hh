@@ -73,6 +73,28 @@ namespace
 			compartments = [i | c = input.compartments[i]; compartment_imports_device(c, device)]
 		}
 
+		shared_object_imports_for_compartment(compartment) = entry {
+			entry := [e | e = compartment.imports[_]; e.kind = "SharedObject"]
+		}
+
+		compartment_imports_shared_object(compartment, object) {
+			count([d | d = shared_object_imports_for_compartment(compartment)[_] ; d.shared_object = object)]) > 0
+		}
+
+		compartment_imports_shared_object_writeable(compartment, object) {
+			count([d | d = shared_object_imports_for_compartment(compartment)[_] ; d.shared_object = object
+			d.permits_store = true]) > 0
+		}
+
+		compartments_with_shared_object_import(object) = compartments {
+			compartments = [i | c = input.compartments[i]; compartment_imports_shared_object(c, object)]
+		}
+
+		compartments_with_shared_object_import_writeable(object) = compartments {
+			compartments = [i | c = input.compartments[i]; compartment_imports_shared_object_writeable(c, object)]
+		}
+
+
 		compartment_export_matching_symbol(compartmentName, symbol) = export {
 			some compartment
 			compartment = input.compartments[compartmentName]
@@ -134,12 +156,28 @@ namespace
 			allow_list(compartments_with_mmio_import(data.board.devices[mmioName]), allowList)
 		}
 
+		shared_object_allow_list(objectName, allowList) {
+			allow_list(compartments_with_shared_object_import(objectName), allowList)
+		}
+
+		shared_object_writeable_allow_list(objectName, allowList) {
+			allow_list(compartments_with_shared_object_import_writeable(objectName), allowList)
+		}
+
+
 		compartment_call_allow_list(compartmentName, exportPattern, allowList) {
 			allow_list(compartments_calling_export_matching(compartmentName, exportPattern), allowList)
 		}
 
 		compartment_allow_list(compartmentName, allowList) {
 			allow_list(compartments_calling(compartmentName), allowList)
+		}
+
+		shared_object(name) = object {
+			some imports
+			imports = [ i | i = input.sharedObjects[_] ; i.name = name]
+			count(imports) == 1
+			object := imports[0]
 		}
 
 		)";
