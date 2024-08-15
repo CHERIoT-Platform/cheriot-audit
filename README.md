@@ -207,6 +207,33 @@ Predicate that, given the name of a compartment and a regular expression that un
 
 Predicate that, given the name of a compartment, fails if any compartment not in the allow set is able to call any of the exported entry points from this function.
 
+`shared_object_imports_for_compartment(compartment)`
+
+Given a compartment name, return a list of all of the imports of shared objects.
+
+`compartment_imports_shared_object(compartment, object)`
+
+Predicate that evaluates to true if the compartment named `compartment` imports the shared object named with the name given by the second.
+
+`compartment_imports_shared_object_writeable(compartment, object)`
+
+Predicate that evaluates to true if the compartment named `compartment` imports the shared object named with the name given by the second *and* that compartment can write to the shared object.
+
+`compartments_with_shared_object_import(object)`
+
+Given the name of a shared object, evaluates to a list of compartments that import that object.
+
+`compartments_with_shared_object_import_writeable(object)`
+
+Given the name of a shared object, evaluates to a list of compartments that import that object with permissions that allow writing.
+
+`shared_object_allow_list(objectName, allowList)`
+
+Predicate that, given the name of a shared object and a set of compartments that are allowed to access it, fails if any other compartment has access to the global.
+
+`shared_object_writeable_allow_list(objectName, allowList)`
+
+Predicate that, given the name of a shared object and a set of compartments that are allowed to access it, fails if any other compartment has write access to the global.
 
 ### The RTOS package
 
