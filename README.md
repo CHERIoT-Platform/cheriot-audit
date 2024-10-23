@@ -75,7 +75,7 @@ You can use this with queries that introspect a firmware image.
 For example, if you wanted to see which compartments in the test suite can allocate memory, you might use this query:
 
 ```sh
-$ cheriot-audit  --board path/to/cheriot-rtos/sdk/boards/sail.json i\
+$ cheriot-audit  --board path/to/cheriot-rtos/sdk/boards/sail.json \
   -j /path/to/cheriot-rtos/tests/build/cheriot/cheriot/release/test-suite.json \
   -q '[ { "owner": owner, "capability": data.rtos.decode_allocator_capability(c) } | c = input.compartments[owner].imports[_] ; data.rtos.is_allocator_capability(c) ]'
 [{"capability":{"quota":1024}, "owner":"allocator_test"}, {"capability":{"quota":1048576}, "owner":"allocator_test"}, {"capability":{"quota":4096}, "owner":"eventgroup_test"}, {"capability":{"quota":4096}, "owner":"locks_test"}, {"capability":{"quota":4096}, "owner":"multiwaiter_test"}, {"capability":{"quota":4096}, "owner":"queue_test"}, {"capability":{"quota":4096}, "owner":"thread_pool_test"}]
@@ -108,6 +108,10 @@ true
 ```
 
 This includes checks that the interrupt controller is accessible only by the scheduler, that the hardware revoker (if one exists) is exclusive to the allocator, that all allocator capabilities are valid, and a few other things.
+
+### Other Examples
+
+- The network stack ships with a [module](https://github.com/CHERIoT-Platform/network-stack/blob/main/network_stack.rego) and a set of [additional examples](https://github.com/CHERIoT-Platform/network-stack?tab=readme-ov-file#auditing).
 
 Built ins
 ---------
