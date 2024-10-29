@@ -91,17 +91,18 @@ namespace
 		Node exportName = unwrap_arg(args, UnwrapOpt(1).types({JSONString}));
 		if (exportName->type() == Error)
 		{
-			return scalar(false);
+			return Undefined;
 		}
 		Node compartmentName =
 		  unwrap_arg(args, UnwrapOpt(0).types({JSONString}));
 		if (compartmentName->type() == Error)
 		{
-			return scalar(false);
+			return Undefined;
 		}
-		auto string                         = get_string(exportName);
-		auto compartmentNameString          = get_string(compartmentName);
-		const std::string_view LibraryExportPrefix = "__library_export_libcalls";
+		auto string                = get_string(exportName);
+		auto compartmentNameString = get_string(compartmentName);
+		const std::string_view LibraryExportPrefix =
+		  "__library_export_libcalls";
 		const std::string_view ExportPrefix = "__export_";
 		if (string.starts_with(LibraryExportPrefix))
 		{
@@ -111,20 +112,20 @@ namespace
 		{
 			if (!string.starts_with(ExportPrefix))
 			{
-				return scalar(false);
+				return Undefined;
 			}
 			string = string.substr(ExportPrefix.size());
 			if (!string.starts_with(compartmentNameString))
 			{
-				return scalar(false);
+				return Undefined;
 			}
 			string = string.substr(compartmentNameString.size());
 		}
 		if (!string.starts_with("_"))
 		{
-			return scalar(false);
+			return Undefined;
 		}
-		string            = string.substr(1);
+		string = string.substr(1);
 		// The way that rego-cpp exposes snmalloc can cause the realloc here to
 		// crash.  Try to allocate a buffer that's large enough that we don't
 		// care.
@@ -136,7 +137,7 @@ namespace
 		if (error != 0)
 		{
 			free(buffer);
-			return scalar(false);
+			return Undefined;
 		}
 		std::string demangled(buffer);
 		free(buffer);
@@ -201,7 +202,7 @@ namespace
 		auto lengthNode = unwrap_arg(args, UnwrapOpt(2).types({Int}));
 		if ((offsetNode->type() == Error) || (lengthNode->type() == Error))
 		{
-			return scalar(false);
+			return Undefined;
 		}
 		size_t   offset = get_int(offsetNode).to_int();
 		size_t   length = get_int(lengthNode).to_int();
@@ -209,7 +210,7 @@ namespace
 		size_t   end    = offset + length;
 		if ((length > 4) || (end > bytes.size()))
 		{
-			return scalar(false);
+			return Undefined;
 		}
 		for (size_t i = 0; i < length; i++)
 		{
@@ -232,7 +233,7 @@ namespace
 		std::string result;
 		if (offset >= bytes.size())
 		{
-			return scalar(false);
+			return Undefined;
 		}
 		for (auto it = bytes.begin() + offset;
 		     (it != bytes.end()) && (*it != '\0');
