@@ -10,6 +10,12 @@ namespace
 
 		is_allocator_capability(capability) {
 			capability.kind == "SealedObject"
+			capability.sealing_type.compartment == "allocator"
+			capability.sealing_type.key == "MallocKey"
+		}
+
+		is_allocator_capability(capability) {
+			capability.kind == "SealedObject"
 			capability.sealing_type.compartment == "alloc"
 			capability.sealing_type.key == "MallocKey"
 		}
