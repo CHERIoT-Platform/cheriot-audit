@@ -1,0 +1,2 @@
+# Check that invalid queries return undefined
+--board inputs/sail.json -j inputs/test-suite.json -q 'integer_from_hex_string("00010000", 3, 2)'
