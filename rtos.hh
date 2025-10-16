@@ -6,21 +6,19 @@ namespace
 	auto rtosPackage = R"(
 		package rtos
 		
-		import future.keywords
-
-		is_allocator_capability(capability) {
+		is_allocator_capability(capability) if {
 			capability.kind == "SealedObject"
 			capability.sealing_type.compartment == "allocator"
 			capability.sealing_type.key == "MallocKey"
 		}
 
-		is_allocator_capability(capability) {
+		is_allocator_capability(capability) if {
 			capability.kind == "SealedObject"
 			capability.sealing_type.compartment == "alloc"
 			capability.sealing_type.key == "MallocKey"
 		}
 
-		decode_allocator_capability(capability) = decoded {
+		decode_allocator_capability(capability) = decoded if {
 			is_allocator_capability(capability)
 			some quota
 			quota = integer_from_hex_string(capability.contents, 0, 4)
@@ -33,7 +31,7 @@ namespace
 			decoded := { "quota": quota }
 		}
 
-		all_sealed_allocator_capabilities_are_valid {
+		all_sealed_allocator_capabilities_are_valid if {
 			some allocatorCapabilities
 			allocatorCapabilities = [ c | c = input.compartments[_].imports[_] ; is_allocator_capability(c) ]
 			every c in allocatorCapabilities {
@@ -42,7 +40,7 @@ namespace
 		}
 
 		# Check that the allocator imports the hazard list with the correct permissions.
-		allocator_hazard_list_permissions_are_valid {
+		allocator_hazard_list_permissions_are_valid if {
 			some hazardListImport
 			hazardListImport = [ i | i = input.compartments.allocator.imports[_] ; i.shared_object == "allocator_hazard_pointers"]
 			every i in hazardListImport {
@@ -53,7 +51,7 @@ namespace
 			}
 		}
 
-		valid {
+		valid if {
 			all_sealed_allocator_capabilities_are_valid
 			# Only the allocator may access the revoker.
 			data.compartment.mmio_allow_list("revoker", {"allocator"})

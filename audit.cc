@@ -80,6 +80,17 @@ namespace
 	}
 
 	using namespace rego;
+	namespace bi = rego::builtins;
+
+	Node demangle_export_decl =
+	  bi::Decl << (bi::ArgSeq
+	               << (bi::Arg << (bi::Name ^ "exportName")
+	                           << (bi::Description ^ "mangled symbol name")
+	                           << (bi::Type << bi::String))
+	               << (bi::Arg << (bi::Name ^ "compartmentName")
+	                           << bi::Description << (bi::Type << bi::String)))
+	           << (bi::Result << (bi::Name ^ "demangled") << bi::Description
+	                          << (bi::Type << bi::String));
 
 	/**
 	 * Built-in function exposed to Rego for demangling the symbol names in
@@ -181,6 +192,23 @@ namespace
 		return result;
 	}
 
+	Node decode_integer_decl =
+	  bi::Decl << (bi::ArgSeq
+	               << (bi::Arg << (bi::Name ^ "hex")
+	                           << (bi::Description ^ "The hex string to decode")
+	                           << (bi::Type << bi::String))
+	               << (bi::Arg << (bi::Name ^ "offset")
+	                           << (bi::Description ^
+	                               "The offset in the string to start decoding")
+	                           << (bi::Type << bi::Number))
+	               << (bi::Arg
+	                   << (bi::Name ^ "length")
+	                   << (bi::Description ^ "The number of bytes to decode")
+	                   << (bi::Type << bi::Number)))
+	           << (bi::Result << (bi::Name ^ "result")
+	                          << (bi::Description ^ "Decoded integer")
+	                          << (bi::Type << bi::Number));
+
 	/**
 	 * Built-in function exposed to Rego for decoding a hex string into an
 	 * integer.
@@ -204,8 +232,20 @@ namespace
 		{
 			return Undefined;
 		}
-		size_t   offset = get_int(offsetNode).to_int();
-		size_t   length = get_int(lengthNode).to_int();
+
+		auto maybeOffset = get_int(offsetNode).to_size();
+		if (!maybeOffset.has_value())
+		{
+			return err(offsetNode, "Integer out of range");
+		}
+		size_t offset = maybeOffset.value();
+
+		auto maybeLength = get_int(lengthNode).to_size();
+		if (!maybeLength.has_value())
+		{
+			return err(lengthNode, "Integer out of range");
+		}
+		size_t   length = maybeLength.value();
 		uint32_t result = 0;
 		size_t   end    = offset + length;
 		if ((length > 4) || (end > bytes.size()))
@@ -219,6 +259,19 @@ namespace
 		return scalar(BigInt{int64_t(result)});
 	}
 
+	Node decode_c_string_decl =
+	  bi::Decl << (bi::ArgSeq
+	               << (bi::Arg << (bi::Name ^ "hex")
+	                           << (bi::Description ^ "The hex string to decode")
+	                           << (bi::Type << bi::String))
+	               << (bi::Arg << (bi::Name ^ "offset")
+	                           << (bi::Description ^
+	                               "The offset in the string to start decoding")
+	                           << (bi::Type << bi::Number)))
+	           << (bi::Result << (bi::Name ^ "result")
+	                          << (bi::Description ^ "Decoded string")
+	                          << (bi::Type << bi::String));
+
 	/**
 	 * Built-in function exposed to Rego for decoding a hex string containing a
 	 * C string into a Rego string.  This takes two arguments, the hex string
@@ -229,7 +282,14 @@ namespace
 		auto bytes =
 		  decode_hex_node(unwrap_arg(args, UnwrapOpt(0).types({JSONString})));
 		auto        offsetNode = unwrap_arg(args, UnwrapOpt(1).types({Int}));
-		size_t      offset     = get_int(offsetNode).to_int();
+
+		auto maybeOffset = get_int(offsetNode).to_size();
+		if (!maybeOffset.has_value())
+		{
+			return err(offsetNode, "Integer out of range");
+		}
+		size_t offset = maybeOffset.value();
+
 		std::string result;
 		if (offset >= bytes.size())
 		{
@@ -337,12 +397,18 @@ int main(int argc, char **argv)
 	  ->check(CLI::ExistingFile);
 	CLI11_PARSE(app, argc, argv);
 	rego::Interpreter rego;
-	rego.builtins().register_builtin(BuiltInDef::create(
-	  Location("export_entry_demangle"), 2, demangle_export));
-	rego.builtins().register_builtin(BuiltInDef::create(
-	  Location("integer_from_hex_string"), 3, decode_integer));
-	rego.builtins().register_builtin(BuiltInDef::create(
-	  Location("string_from_hex_string"), 2, decode_c_string));
+	rego.builtins()->register_builtin(
+	  BuiltInDef::create(Location("export_entry_demangle"),
+	                     demangle_export_decl,
+	                     demangle_export));
+	rego.builtins()->register_builtin(
+	  BuiltInDef::create(Location("integer_from_hex_string"),
+	                     decode_integer_decl,
+	                     decode_integer));
+	rego.builtins()->register_builtin(
+	  BuiltInDef::create(Location("string_from_hex_string"),
+	                     decode_c_string_decl,
+	                     decode_c_string));
 	rego.set_input_json_file(firmwareReportJSONFile);
 	if (!add_board_json(rego, boardJSONFile))
 	{
