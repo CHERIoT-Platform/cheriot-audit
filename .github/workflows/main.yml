@@ -21,11 +21,11 @@ jobs:
             defines: ""
           }
         - {
-            name: "Ubuntu 20.04 Release",
-            os: "ubuntu-20.04",
+            name: "Ubuntu 22.04 Release",
+            os: "ubuntu-22.04",
             build-type: Release,
             dependencies: "sudo apt install ninja-build",
-            defines: "-DREGOCPP_USE_CXX17=ON"
+            defines: ""
           }
         - {
             name: "macOS Release",
@@ -42,11 +42,11 @@ jobs:
             defines: ""
           }
         - {
-            name: "Ubuntu 20.04 Debug",
-            os: "ubuntu-20.04",
+            name: "Ubuntu 22.04 Debug",
+            os: "ubuntu-22.04",
             build-type: Debug,
             dependencies: "sudo apt install ninja-build",
-            defines: "-DREGOCPP_USE_CXX17=ON"
+            defines: ""
           }
         - {
             name: "macOS Debug",
