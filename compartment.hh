@@ -152,8 +152,17 @@ namespace
 			compartments & allowList == compartments
 		}
 
+		# handle the case that the test array is empty
+		allow_list(testArray, allowList) if {
+			count(testArray) == 0
+		}
+
 		mmio_allow_list(mmioName, allowList) if {
 			allow_list(compartments_with_mmio_import(data.board.devices[mmioName]), allowList)
+		}
+
+		mmio_allow_list(mmioName, allowList) if {
+			not data.board.devices[mmioName]
 		}
 
 		shared_object_allow_list(objectName, allowList) if {
