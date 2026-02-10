@@ -74,16 +74,16 @@ namespace
 		}
 
 		shared_object_imports_for_compartment(compartment) = entry if {
-			entry := [e | e = compartment.imports[_]; e.kind = "SharedObject"]
+			entry := [e | e = compartment.imports[_]; e.kind == "SharedObject"]
 		}
 
 		compartment_imports_shared_object(compartment, object) if {
-			count([d | d = shared_object_imports_for_compartment(compartment)[_] ; d.shared_object = object]) > 0
+			count([d | d = shared_object_imports_for_compartment(compartment)[_] ; d.shared_object == object]) > 0
 		}
 
 		compartment_imports_shared_object_writeable(compartment, object) if {
-			count([d | d = shared_object_imports_for_compartment(compartment)[_] ; d.shared_object = object
-			d.permits_store = true]) > 0
+			count([d | d = shared_object_imports_for_compartment(compartment)[_] ; d.shared_object == object
+			d.permits_store == true]) > 0
 		}
 
 		compartments_with_shared_object_import(object) = compartments if {
@@ -115,7 +115,7 @@ namespace
 		# Helper that builds a map from symbol names to compartments.  This is
 		# to avoid some O(n^2) lookups.  Or would, if rego-cpp didn't recompute
 		# this every evaluation.
-		#entry_point_map := { entry.export_symbol : compartment | entry = input.compartments[compartment].exports[_] ; entry.kind = "Function"}
+		#entry_point_map := { entry.export_symbol : compartment | entry = input.compartments[compartment].exports[_] ; entry.kind == "Function"}
 
 		compartment_exports_function(callee, importEntry) if {
 			#entry_point_map[importEntry.export_symbol] == callee
@@ -137,7 +137,7 @@ namespace
 			# This reduces the time for this query on the test suite from over
 			# 6s to under 0.5s for me.
 			some entry_point_map
-			entry_point_map = { entry.export_symbol : compartment | entry = input.compartments[compartment].exports[_] ; entry.kind = "Function"}
+			entry_point_map = { entry.export_symbol : compartment | entry = input.compartments[compartment].exports[_] ; entry.kind == "Function"}
 			compartments = {c | i = input.compartments[c].imports[_]; check_export(entry_point_map, i, callee)}
 		}
 
@@ -184,7 +184,7 @@ namespace
 
 		shared_object(name) = object if {
 			some imports
-			imports = [ i | i = input.sharedObjects[_] ; i.name = name]
+			imports = [ i | i = input.sharedObjects[_] ; i.name == name]
 			count(imports) == 1
 			object := imports[0]
 		}
