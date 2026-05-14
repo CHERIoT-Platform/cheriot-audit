@@ -69,9 +69,13 @@ namespace
 			count([d | d = mmio_imports_for_compartment(compartment)[_] ; mmio_is_device(d, device)]) > 0
 		}
 
+		default compartments_with_mmio_import(device) = {}
+
 		compartments_with_mmio_import(device) = compartments if {
 			compartments = [i | c = input.compartments[i]; compartment_imports_device(c, device)]
 		}
+
+		default shared_object_imports_for_compartment(compartment) = {}
 
 		shared_object_imports_for_compartment(compartment) = entry if {
 			entry := [e | e = compartment.imports[_]; e.kind == "SharedObject"]
@@ -86,14 +90,19 @@ namespace
 			d.permits_store == true]) > 0
 		}
 
+		default compartments_with_shared_object_import(object) = {}
+
 		compartments_with_shared_object_import(object) = compartments if {
 			compartments = [i | c = input.compartments[i]; compartment_imports_shared_object(c, object)]
 		}
+
+		default compartments_with_shared_object_import_writeable(object) = {}
 
 		compartments_with_shared_object_import_writeable(object) = compartments if {
 			compartments = [i | c = input.compartments[i]; compartment_imports_shared_object_writeable(c, object)]
 		}
 
+		default compartment_export_matching_symbol(compartmentName, symbol)  = {}
 
 		compartment_export_matching_symbol(compartmentName, symbol) = export if {
 			some compartment
@@ -107,6 +116,8 @@ namespace
 		compartments_calling_export(export) = compartments if {
 			compartments = [c | i = input.compartments[c].imports[_]; export_matches_import(i, export)]
 		}
+
+		default compartments_calling_export_matching(compartmentName, export) = {}
 
 		compartments_calling_export_matching(compartmentName, export) = compartments if {
 			compartments = compartments_calling_export(compartment_export_matching_symbol(compartmentName, export))
